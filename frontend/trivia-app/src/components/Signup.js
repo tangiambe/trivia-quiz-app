@@ -7,9 +7,17 @@ export const Signup = () => {
 
     return(
         <>
+            {/* This container holds the register header */}
+            <Container className="mt-5">
+                <section className="mx-auto">
+                    <h1 className="text-center">Register</h1>
+                </section>
+            </Container>
+            
+            {/* This container holds the register form */}
             <Container>
-                <Form>
-                    <Form.Group>
+                <Form className="mx-auto w-25">
+                    <Form.Group className="mt-4 mb-4">
                         <Form.Label>Username</Form.Label>
                         <Form.Control
                             required
@@ -18,7 +26,7 @@ export const Signup = () => {
                         />
                     </Form.Group>
 
-                    <Form.Group>
+                    <Form.Group className="mt-4 mb-4">
                         <Form.Label>Email</Form.Label>
                         <Form.Control
                             required
@@ -27,7 +35,7 @@ export const Signup = () => {
                         />
                     </Form.Group>
 
-                    <Form.Group>
+                    <Form.Group className="mt-4 mb-4">
                         <Form.Label>Password</Form.Label>
                         <Form.Control
                             required
@@ -36,7 +44,7 @@ export const Signup = () => {
                         />
                     </Form.Group>
 
-                    <Form.Group>
+                    <Form.Group className="mt-4 mb-4">
                         <Form.Label>Confirm Password</Form.Label>
                         <Form.Control
                             required
@@ -44,9 +52,7 @@ export const Signup = () => {
                             placeholder="Confirm Password"    
                         />
                     </Form.Group>
-                    <div className="d-grid">
-                    <Button type="submit">Create Account</Button>
-                    </div>
+                        <Button className="w-100" type="submit">Create Account</Button>
                 </Form>
             </Container>
         </>
