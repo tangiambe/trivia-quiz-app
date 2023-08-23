@@ -10,27 +10,24 @@ export const Login = () => {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
 
-    const [credentials, setCredentials] = useState({
-        username: "",
-        password: ""
-    });
+    const [credentials, setCredentials] = useState({});
 
-    const updateUsername = (event) => {
-        setUsername(event.target.value);
-        console.log(username);
-    }
+    // const updateUsername = (event) => {
+    //     setUsername(event.target.username.value);
+    //     console.log(username);
+    // }
 
-    const updatePassword = (event) => {
-        setPassword(event.target.value);
-        console.log(password);
-    }
+    // const updatePassword = (event) => {
+    //     setPassword(event.target.value);
+    //     console.log(password);
+    // }
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
         setCredentials({
-            username: {username},
-            password: {password}
+            username: event.target.username.value,
+            password: event.target.password.value
         });
 
         console.log(credentials);
@@ -55,21 +52,23 @@ export const Login = () => {
                 {/* mx-auto refers to the CSS property margin: auto and 'w' refers to width */}
                 <Form className="mx-auto w-25" onSubmit={handleSubmit}>
                     <Form.Group className="mt-4 mb-4">
-                        <Form.Label>Username</Form.Label>
+                        <Form.Label htmlFor="username">Username</Form.Label>
                         <Form.Control
                             required
                             type="text"
+                            id="username"
+                            name="username"
                             placeholder="Username"
-                            onChange={updateUsername} 
                         />
                     </Form.Group>
                     <Form.Group className="mt-4 mb-4">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label htmlFor="password">Password</Form.Label>
                         <Form.Control
                             required
                             type="password"
-                            placeholder="Password"
-                            onChange={updatePassword}    
+                            id="password"
+                            name="password"
+                            placeholder="Password"  
                         />
                     </Form.Group>
                         <Button className="w-100" type="submit">Login</Button>
