@@ -1,0 +1,16 @@
+#wrapper {
+
+    /* 1 */
+    background-color: #ea8d8d;
+    background-image: linear-gradient(66deg, #ea8d8d 0%, #a890fe 77%);
+
+    height: 100vh;
+}
+
+#loginPageRow{
+    height: 85vh;
+}
+
+/* #loginPageTitle{
+    font-size: 4em;
+} */

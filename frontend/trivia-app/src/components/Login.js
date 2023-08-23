@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
 
 export const Login = () => {
 
@@ -34,6 +35,9 @@ export const Login = () => {
 
     return(
         <>
+
+    <Container fluid id="wrapper">
+        <Row id="loginPageRow">
             {/* This container holds the login header */}
             <Container className="mt-5">
                 <section className="mx-auto">
@@ -68,6 +72,8 @@ export const Login = () => {
                         <Button className="w-100" type="submit">Login</Button>
                 </Form>
             </Container>
+        </Row>
+    </Container>
         </>
     );
 }

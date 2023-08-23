@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
 
 export const Signup = () => {
 
@@ -34,7 +35,9 @@ export const Signup = () => {
     },[])
 
     return(
-        <>
+     <>
+        <Container fluid id="wrapper">
+            <Row id="signupPageRow">    
             {/* This container holds the register header */}
             <Container className="mt-5">
                 <section className="mx-auto">
@@ -113,6 +116,8 @@ export const Signup = () => {
                         <Button className="w-100" type="submit">Create Account</Button>
                 </Form>
             </Container>
-        </>
-    );
+            </Row>
+         </Container>
+     </>
+     );
 }
