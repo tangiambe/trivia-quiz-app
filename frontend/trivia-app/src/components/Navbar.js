@@ -12,14 +12,18 @@ export const NavBar = () => {
         <>
            <Navbar expand="lg" className="bg-body-tertiary" >
             <Container>
-                <Navbar.Brand href="/">Trivia </Navbar.Brand>
+                <Navbar.Brand href="/"><strong>TriviYay!</strong></Navbar.Brand>
                 <Nav>
-                    <Nav.Link href="/signup" className="">
-                       Register
-                    </Nav.Link>
-                    <Nav.Link href="/login" className="">
-                        Login
-                    </Nav.Link>
+                    <Nav.Item className="px-3 py-2">
+                        <Nav.Link href="/signup">
+                            Register
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item className="px-3 py-2">
+                        <Nav.Link href="/login">
+                            Login
+                        </Nav.Link>
+                    </Nav.Item>
                 </Nav>
             </Container>
            </Navbar>
