@@ -17,7 +17,7 @@ export const NavBar = () => {
                     <Nav.Link href="/signup" className="">
                        Register
                     </Nav.Link>
-                    <Nav.Link href="/login" className="mr-3">
+                    <Nav.Link href="/login" className="">
                         Login
                     </Nav.Link>
                 </Nav>
