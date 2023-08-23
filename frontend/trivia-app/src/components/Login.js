@@ -7,20 +7,11 @@ export const Login = () => {
 
     // Two Hooks - useState(): manages/keeps track data within your component
     // -useEffect(): manages startup behavior when the component mounts
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
-
-    const [credentials, setCredentials] = useState({});
-
-    // const updateUsername = (event) => {
-    //     setUsername(event.target.username.value);
-    //     console.log(username);
-    // }
-
-    // const updatePassword = (event) => {
-    //     setPassword(event.target.value);
-    //     console.log(password);
-    // }
+    const initialState = {
+        username: "",
+        password: "",
+    }
+    const [credentials, setCredentials] = useState(initialState);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -29,6 +20,9 @@ export const Login = () => {
             username: event.target.username.value,
             password: event.target.password.value
         });
+
+        event.target.username.value = "";
+        event.target.password.value = "";
 
         console.log(credentials);
     }
