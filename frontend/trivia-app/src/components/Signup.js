@@ -18,6 +18,24 @@ export const Signup = () => {
             <Container>
                 <Form className="mx-auto w-25">
                     <Form.Group className="mt-4 mb-4">
+                        <Form.Label>First Name</Form.Label>
+                        <Form.Control
+                            required
+                            type="text"
+                            placeholder="First Name"    
+                        />
+                    </Form.Group>
+                    
+                    <Form.Group className="mt-4 mb-4">
+                        <Form.Label>Last Name</Form.Label>
+                        <Form.Control
+                            required
+                            type="text"
+                            placeholder="Last Name"    
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mt-4 mb-4">
                         <Form.Label>Username</Form.Label>
                         <Form.Control
                             required
