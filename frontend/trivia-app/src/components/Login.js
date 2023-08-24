@@ -52,7 +52,7 @@ export const Login = () => {
             {/* This container holds the login form */}
             <Container>
                 {/* mx-auto refers to the CSS property margin: auto and 'w' refers to width */}
-                <Form className="mx-auto w-50" onSubmit={handleSubmit}>
+                <Form className="mx-auto w-60" onSubmit={handleSubmit}>
                     <Form.Group className="mt-4 mb-4">
                         <Form.Label htmlFor="username">Username</Form.Label>
                         <Form.Control
@@ -75,7 +75,7 @@ export const Login = () => {
                     </Form.Group>
                         <Button className="w-100" type="submit">Login</Button>
                         <div>
-                            <p className="mb-0">Don't have an account? <a href="/signup">Register Now!</a></p>
+                            <p className="mt-2">Don't have an account? <a href="/signup">Register Now!</a></p>
                         </div>
                 </Form>
             </Container>
