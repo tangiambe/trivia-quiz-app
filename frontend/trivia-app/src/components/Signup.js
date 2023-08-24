@@ -6,14 +6,16 @@ import Row from 'react-bootstrap/Row';
 
 export const Signup = () => {
 
-    const [fname, setFname] = useState();
-    const [lname, setLname] = useState();
-    const [username, setUsername] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [confirmPw, setConfirmPw] = useState();
+    const initialState = {
+        fname:"",
+        lname: "",
+        username: "",
+        email:"",
+        password: "",
+        confirmPw:""
+    }
 
-    const [credentials, setCredentials] = useState({});
+    const [credentials, setCredentials] = useState(initialState);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -26,6 +28,13 @@ export const Signup = () => {
             password: event.target.password.value,
             confirmPw: event.target.confirmPw.value
         });
+
+        event.target.fname.value = "";
+        event.target.lname.value= "";
+        event.target.username.value= "";
+        event.target.email.value= "";
+        event.target.password.value= "";
+        event.target.confirmPw.value= "";
 
         console.log(credentials);
     }
@@ -43,6 +52,9 @@ export const Signup = () => {
                 <section className="mx-auto">
                     <h1 className="text-center">Register</h1>
                 </section>
+                        <div>
+                            <p className="text-center"> Already have an account? <a href="/login">Log In!</a></p>
+                        </div>
             </Container>
             
             {/* This container holds the register form */}
