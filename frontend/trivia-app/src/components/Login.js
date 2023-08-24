@@ -40,7 +40,7 @@ export const Login = () => {
         <>
 
     <Container fluid id="wrapper" className="d-flex align-items-center">
-    <Card className="mx-auto">
+    <Card id="loginCard" className="mx-auto">
         <Row id="loginPageRow">
             {/* This container holds the login header */}
             <Container className="mt-5">
