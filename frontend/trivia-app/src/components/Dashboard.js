@@ -39,7 +39,7 @@ export const Dashboard = () => {
                                     <Card.Title className="text-center py-4">
                                         <h1 className="text-white">Our Quizzes</h1>
                                     </Card.Title>
-                                    <Row>
+                                    <Row className="">
                                             
                                         <Col className="d-flex justify-content-center m-3">
                                             <Card className="quizSetCard">
