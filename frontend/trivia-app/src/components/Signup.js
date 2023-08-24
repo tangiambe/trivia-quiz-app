@@ -18,10 +18,15 @@ export const Signup = () => {
     }
 
     const [credentials, setCredentials] = useState(initialState);
+    const [validated, setValidated] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
+        const form = event.currentTarget
+        if (form.checkValidity() === false){
+            event.stopPropagation()
+        }
+        setValidated(true)
         setCredentials({
             fName: event.target.fname.value,
             lName: event.target.lname.value,
@@ -63,7 +68,10 @@ export const Signup = () => {
             
             {/* This container holds the register form */}
             <Container>
-                <Form className="mx-auto w-60" onSubmit={handleSubmit}>
+                <Form className="mx-auto w-60 needs-validation" 
+                noValidate 
+                validated = {validated}
+                onSubmit={handleSubmit}>
                     <Row>
                         <div class="col">
                         <Form.Group className="mt-4 mb-4">
@@ -73,7 +81,7 @@ export const Signup = () => {
                             type="text"
                             id="fname"
                             name="fname"
-                            placeholder="First Name"    
+                            placeholder="First Name" 
                         />
                     </Form.Group>
                         </div>
