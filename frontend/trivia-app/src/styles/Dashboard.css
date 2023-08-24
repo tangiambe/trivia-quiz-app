@@ -1,0 +1,38 @@
+#db-wrapper{
+    background-color: #ea8d8d;
+    background-image: linear-gradient(66deg, #ea8d8d 0%, #a890fe 77%);
+
+    height: 100vh;
+    font-family: "Marker Felt", fantasy;
+}
+
+#playerCard{
+    background-color: #1e2833;
+    border-radius: 25px;
+    box-shadow: 20px 5px 2px rgba(91, 50, 83,0.2);
+}
+
+#dbRecentlyPlayedContainer{
+    display: flex;
+    align-items: stretch;
+}
+
+.dbSectionCard{
+    background-color: #1e2833;
+    border-radius: 25px;
+    box-shadow: 20px 5px 2px rgba(91, 50, 83,0.2);
+}
+
+.quizSetCard{
+    height: 10rem;
+    width: 10rem;
+    background-color: #000000;
+    opacity: 0.9;
+    background: radial-gradient(circle, transparent 20%, #c8c2df 20%, #c8c2df 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #c8c2df 20%, #c8c2df 80%, transparent 80%, transparent) 45px 45px, linear-gradient(#a890fe 3.6px, transparent 3.6px) 0 -1.8px, linear-gradient(90deg, #a890fe 3.6px, #c8c2df 3.6px) -1.8px 0;
+    background-size: 90px 90px, 90px 90px, 45px 45px, 45px 45px;
+    transition: transform 0.3s ease; 
+}
+
+.quizSetCard:hover{
+    transform: scale(1.1);
+}

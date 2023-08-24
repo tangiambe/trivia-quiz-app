@@ -27,13 +27,13 @@ export const Home = () => {
                 {/* Text Column */}
                 <Col id="landingPageText" className="d-flex flex-column justify-content-center">
                     <Container className="d-flex flex-column">
-                        <h3 className="pb-3"><strong>Ready to Test Your Knowledge?</strong></h3>
-                        <h1 id="landingPageTitle" className="text-uppercase text-white w-75"><strong>Welcome to TriviYay!</strong></h1>
+                        <h3 className="pb-3 fw-bold">Ready to Test Your Knowledge?</h3>
+                        <h1 id="landingPageTitle" className="text-uppercase text-white w-75 fw-bold">Welcome to TriviYay!</h1>
                         <p className="text-white mt-3">Play now and discover the joy of learning through fun.</p>
                     </Container>
                     <Container className="d-flex mt-4">
-                        <Button href="/signup" className="btn-primary mx-2">Sign Up</Button>
-                        <Button href="/login" className="btn-success mx-2">Login</Button>
+                        <Button href="/signup" className="btn-primary mx-2 px-4 fw-bold">Sign Up</Button>
+                        <Button href="/login" className="btn-success mx-2 px-4 fw-bold">Login</Button>
                     </Container>
                 </Col>
             </Row>
