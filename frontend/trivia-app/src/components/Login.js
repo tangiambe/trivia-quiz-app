@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 
+
 export const Login = () => {
 
     // Two Hooks - useState(): manages/keeps track data within your component
@@ -70,6 +71,9 @@ export const Login = () => {
                         />
                     </Form.Group>
                         <Button className="w-100" type="submit">Login</Button>
+                        <div>
+                            <p className="mb-0">Don't have an account? <a href="/signup">Register Now!</a></p>
+                        </div>
                 </Form>
             </Container>
         </Row>
