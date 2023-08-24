@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav'
 // import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { OffcanvasHeader, OffcanvasTitle } from "react-bootstrap";
+
 
 
 
@@ -14,7 +14,7 @@ export const NavBar = () => {
         <>
            <Navbar expand="lg" className="bg-body-tertiary" >
             <Container>
-                <Navbar.Brand href="/"><strong>TriviYay!</strong></Navbar.Brand>
+                <Navbar.Brand href="/" className="fw-bold">TriviYay!</Navbar.Brand>
                 <Navbar.Toggle id="offcanvasNavbarToggle" className="border border-0" aria-controls="offcanvasNavbar-expand-lg"/>
                 <Navbar.Offcanvas id="offcanvasNavbar-expand-lg" aria-labelledby="offcanvasNavbarLabel-expand-lg" placement="end">
                     <Offcanvas.Header closeButton>
@@ -23,13 +23,13 @@ export const NavBar = () => {
                     <Offcanvas.Body>
                         <Nav className="justify-content-end flex-grow-1">
                             <Nav.Item className="px-3 py-2">
-                                <Nav.Link href="/signup">
-                                    <strong>Register</strong>
+                                <Nav.Link href="/signup" className="fw-bold">
+                                    Register
                                 </Nav.Link>
                             </Nav.Item>
                             <Nav.Item className="px-3 py-2">
-                                <Nav.Link href="/login">
-                                    <strong>Login</strong>
+                                <Nav.Link href="/login" className="fw-bold">
+                                    Login
                                 </Nav.Link>
                             </Nav.Item>
                         </Nav>
