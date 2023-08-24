@@ -3,6 +3,8 @@ import Container from "react-bootstrap/esm/Container";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
+import Card from 'react-bootstrap/Card'
+import '../styles/Signup.css'
 
 export const Signup = () => {
 
@@ -45,10 +47,12 @@ export const Signup = () => {
 
     return(
      <>
-        <Container fluid id="wrapper">
+        <Container fluid id="wrapper" className="d-flex align-items-center">
+        <Card id='signupCard' className="mx-auto ">
             <Row id="signupPageRow">    
             {/* This container holds the register header */}
-            <Container className="mt-5">
+            
+            <Container className="mt-1">
                 <section className="mx-auto">
                     <h1 className="text-center">Register</h1>
                 </section>
@@ -59,8 +63,10 @@ export const Signup = () => {
             
             {/* This container holds the register form */}
             <Container>
-                <Form className="mx-auto w-25" onSubmit={handleSubmit}>
-                    <Form.Group className="mt-4 mb-4">
+                <Form className="mx-auto w-60" onSubmit={handleSubmit}>
+                    <Row>
+                        <div class="col">
+                        <Form.Group className="mt-4 mb-4">
                         <Form.Label htmlFor="fname">First Name</Form.Label>
                         <Form.Control
                             required
@@ -70,8 +76,9 @@ export const Signup = () => {
                             placeholder="First Name"    
                         />
                     </Form.Group>
-                    
-                    <Form.Group className="mt-4 mb-4">
+                        </div>
+                        <div class="col">
+                        <Form.Group className="mt-4 mb-4">
                         <Form.Label htmlFor="lname">Last Name</Form.Label>
                         <Form.Control
                             required
@@ -81,8 +88,10 @@ export const Signup = () => {
                             placeholder="Last Name"    
                         />
                     </Form.Group>
+                        </div>
+                    </Row>
 
-                    <Form.Group className="mt-4 mb-4">
+                    <Form.Group className="mt-1 mb-4">
                         <Form.Label htmlFor="username">Username</Form.Label>
                         <Form.Control
                             required
@@ -128,8 +137,9 @@ export const Signup = () => {
                         <Button className="w-100" type="submit">Create Account</Button>
                 </Form>
             </Container>
-            </Row>
-         </Container>
+         </Row>
+        </Card>
+        </Container>
      </>
      );
 }

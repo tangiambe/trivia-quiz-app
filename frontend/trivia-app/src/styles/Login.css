@@ -8,9 +8,64 @@
 }
 
 #loginPageRow{
-    height: 85vh;
+    /* height: 90vh; */
+    color: #ffffff;
 }
 
-/* #loginPageTitle{
-    font-size: 4em;
-} */
+.card {
+    width: 580px;
+    background-color: #1e2833;
+    height: 550px;
+    border-radius: 40px;
+    padding: 40px;
+    margin: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    box-shadow: 20px 5px 2px rgba(91, 50, 83,0.2);
+    font-family: "Marker Felt", fantasy;
+    
+  }
+  
+  input[type=text] {
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+input[type=password] {
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+  
+  .login_button {
+    display: block;
+    margin: 3rem auto 1rem auto;
+    width: 55%;
+    padding: 0.75rem 1rem;
+    border-radius: 25px;
+    outline: 0;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    background-color: #4e65f7;
+    color: white;
+    border: 2px solid transparent;
+  }
+  
+  .login_button:hover {
+    border: 2px solid #4e65f7;
+    background-color: #000;
+  }
+  
+  .link_container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  
