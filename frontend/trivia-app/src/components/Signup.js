@@ -3,6 +3,7 @@ import Container from "react-bootstrap/esm/Container";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
+import Card from 'react-bootstrap/Card'
 
 export const Signup = () => {
 
@@ -46,8 +47,10 @@ export const Signup = () => {
     return(
      <>
         <Container fluid id="wrapper">
+        <Card className=" bg-white d-flex mx-auto justify-content-center w-50">
             <Row id="signupPageRow">    
             {/* This container holds the register header */}
+            
             <Container className="mt-5">
                 <section className="mx-auto">
                     <h1 className="text-center">Register</h1>
@@ -128,8 +131,9 @@ export const Signup = () => {
                         <Button className="w-100" type="submit">Create Account</Button>
                 </Form>
             </Container>
-            </Row>
-         </Container>
+         </Row>
+        </Card>
+        </Container>
      </>
      );
 }
