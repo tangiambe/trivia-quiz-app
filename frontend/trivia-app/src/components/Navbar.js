@@ -25,7 +25,9 @@ export const NavBar = () => {
         <>
            <Navbar expand="lg" className="bg-body-tertiary" >
             <Container>
-                <Navbar.Brand href="/" className="fw-bold">TriviYay!</Navbar.Brand>
+                <Navbar.Brand href="/" className="fw-bold">
+                    TriviYay!
+                </Navbar.Brand>
                 <Navbar.Toggle id="offcanvasNavbarToggle" className="border border-0" aria-controls="offcanvasNavbar-expand-lg"/>
                 <Navbar.Offcanvas id="offcanvasNavbar-expand-lg" aria-labelledby="offcanvasNavbarLabel-expand-lg" placement="end">
                     <Offcanvas.Header closeButton>

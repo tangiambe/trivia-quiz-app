@@ -32,8 +32,8 @@ export const Home = () => {
                         <p className="text-white mt-3">Play now and discover the joy of learning through fun.</p>
                     </Container>
                     <Container className="d-flex mt-4">
-                        <Button href="/signup" className="btn-primary mx-2 px-5 fw-bold">Sign Up</Button>
-                        <Button href="/login" className="btn-success mx-2 px-5 fw-bold">Login</Button>
+                        <Button href="/signup" className="btn-primary mx-2 px-4 fw-bold">Sign Up</Button>
+                        <Button href="/login" className="btn-success mx-2 px-4 fw-bold">Login</Button>
                     </Container>
                 </Col>
             </Row>
