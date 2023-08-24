@@ -16,10 +16,15 @@ export const Login = () => {
         password: "",
     }
     const [credentials, setCredentials] = useState(initialState);
+    const [validated, setValidated] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
+        const form = event.currentTarget
+        if (form.checkValidity() === false){
+            event.stopPropagation()
+        }
+        setValidated(true)
         setCredentials({
             username: event.target.username.value,
             password: event.target.password.value
@@ -52,7 +57,10 @@ export const Login = () => {
             {/* This container holds the login form */}
             <Container>
                 {/* mx-auto refers to the CSS property margin: auto and 'w' refers to width */}
-                <Form className="mx-auto w-60" onSubmit={handleSubmit}>
+                <Form className="mx-auto w-60 needs-validation" 
+                noValidate 
+                validated = {validated}
+                onSubmit={handleSubmit}>
                     <Form.Group className="mt-4 mb-4">
                         <Form.Label htmlFor="username">Username</Form.Label>
                         <Form.Control
