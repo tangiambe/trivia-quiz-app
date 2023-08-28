@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card'
 import '../styles/Login.css'
+import { UserApi } from "../apis/UserApi";
+import { login } from "../redux/userSlice";
 
 
 export const Login = () => {
 
     // Two Hooks - useState(): manages/keeps track data within your component
     // -useEffect(): manages startup behavior when the component mounts
-    const initialState = {
-        username: "",
-        password: "",
-    }
-    const [credentials, setCredentials] = useState(initialState);
+  
+    const [user, setUser] = useState({_id: -1});
     const [validated, setValidated] = useState(false)
+
+    // const activeUser = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -25,21 +30,25 @@ export const Login = () => {
             event.stopPropagation()
         }
         setValidated(true)
-        setCredentials({
-            username: event.target.username.value,
-            password: event.target.password.value
-        });
-
+        UserApi.getUserByCredentials(event.target.username.value, event.target.password.value, setUser);
+        
         event.target.username.value = "";
         event.target.password.value = "";
 
-        console.log(credentials);
+        // console.log(credentials);
     }
 
     // Arrow syntax: () => {}
     useEffect(() => {
+
+        if(user._id !== -1){
+            dispatch(login(user));
+            alert("Login Success");
+            navigate("/dashboard");
+        }
+
         console.log("mounted");
-    },[])
+    },[user])
 
     return(
         <>

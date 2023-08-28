@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, render_template, redirect, session
 from flask_pymongo import PyMongo
+from flask_cors import CORS, cross_origin
 from flask_bcrypt import Bcrypt
 
 import os
@@ -9,8 +10,10 @@ app = Flask(__name__)
 #INDICATES ABILITY TO CONNECT TO DATABASE, THROWS ERROR OTHERWISE
 try:
     app = Flask(__name__)
+    cors = CORS(app)
     # mongodb_client = PyMongo(app, uri="mongodb://localhost:27017/trivia_bank")
     app.config["MONGO_URI"] = "mongodb://localhost:27017/trivia_bank"
+    app.config["CORS_HEADERS"] = "Content-Type"
     mongo = PyMongo(app)
     db = mongo.db
 except:
@@ -18,6 +21,7 @@ except:
 
 
 @app.route("/signup", methods=["POST"])
+@cross_origin()
 def createUser():
    
     json_data = request.json
@@ -34,6 +38,7 @@ def createUser():
     return jsonify(json_data)
 
 @app.route("/login", methods=["POST"])
+@cross_origin()
 def getUserByCredentials():
     json_data = request.json
     user = db.users.find_one({"username": json_data["username"], "password": json_data["password"]})

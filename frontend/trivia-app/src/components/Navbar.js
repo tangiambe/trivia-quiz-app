@@ -35,7 +35,7 @@ export const NavBar = () => {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
 
-                        {activeUser.userId === -1 ? (
+                        {activeUser._id === -1 ? (
                             <Nav className="justify-content-end flex-grow-1">
                                 <Nav.Item className="px-3 py-2">
                                     <Nav.Link href="/signup" className="fw-bold">
