@@ -3,7 +3,9 @@ const URI = "http://127.0.0.1:5000";
 export const UserApi = {
 
     createUser: async () => {
+        const response = await fetch(URI + "signup", {
 
+        });
     },
 
     getUserByCredentials: async (username, password,setUser) => {
@@ -20,7 +22,7 @@ export const UserApi = {
         
             if(response.ok){
                 const data = await response.json();
-                console.log(data);
+                console.log("Data: ",data);
                 setUser(data);
             } else {
                 console.error("Error:", response.status);

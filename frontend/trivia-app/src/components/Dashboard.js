@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import '../styles/Dashboard.css'
+import { useSelector } from "react-redux";
 
 export const Dashboard = () => {
+
+    const activeUser = useSelector((state) => state.user);
+
+    useEffect(() => {
+        // console.log("Active User: ", JSON.stringify(activeUser));
+    }, [])
 
     return(
         <>
@@ -12,7 +19,7 @@ export const Dashboard = () => {
                         <Card.Body >
                            <Row>
                                 <Col md="10" className="text-white">
-                                    <h1>Hello, User</h1>
+                                    <h1>Hello, {activeUser.firstName}</h1>
                                     <p>Play more</p>
                                 </Col>
 

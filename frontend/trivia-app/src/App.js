@@ -10,7 +10,9 @@ import { Dashboard } from "./components/Dashboard";
 import { Quiz } from "./components/Quiz";
 
 
+
 function App() {
+ 
 
   return (
     <BrowserRouter>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav'
@@ -21,6 +21,10 @@ export const NavBar = () => {
         dispatch(logout());
     }
 
+    useEffect(() => {
+        console.log("Active User: " + JSON.stringify(activeUser));
+    }, [])
+
     return (
         <>
            <Navbar expand="lg" className="bg-body-tertiary" >
@@ -35,7 +39,7 @@ export const NavBar = () => {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
 
-                        {activeUser._id === -1 ? (
+                        {activeUser._id === "-1" ? (
                             <Nav className="justify-content-end flex-grow-1">
                                 <Nav.Item className="px-3 py-2">
                                     <Nav.Link href="/signup" className="fw-bold">
@@ -52,7 +56,7 @@ export const NavBar = () => {
                         ):(
                             <Nav className="justify-content-end flex-grow-1">
                                 <Nav.Item className="px-3 py-2">
-                                    <Nav.Link href="/signup" className="fw-bold">
+                                    <Nav.Link href="/dashboard" className="fw-bold">
                                         Dashboard
                                     </Nav.Link>
                                 </Nav.Item>

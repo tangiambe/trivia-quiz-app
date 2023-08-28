@@ -16,10 +16,17 @@ export const Login = () => {
     // Two Hooks - useState(): manages/keeps track data within your component
     // -useEffect(): manages startup behavior when the component mounts
   
-    const [user, setUser] = useState({_id: -1});
+    const [user, setUser] = useState({
+        _id: "-1",
+        firstName: "",
+        lastName: "",
+        username: "",
+        email: "",
+        password: "",
+    });
     const [validated, setValidated] = useState(false)
+    const activeUser = useSelector((state) => state.user);
 
-    // const activeUser = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -28,24 +35,34 @@ export const Login = () => {
         const form = event.currentTarget
         if (form.checkValidity() === false){
             event.stopPropagation()
+        } else {
+            setValidated(true)
+            UserApi.getUserByCredentials(event.target.username.value, event.target.password.value, setUser);
+
         }
-        setValidated(true)
-        UserApi.getUserByCredentials(event.target.username.value, event.target.password.value, setUser);
+       
+
+       
         
         event.target.username.value = "";
         event.target.password.value = "";
 
-        // console.log(credentials);
     }
 
     // Arrow syntax: () => {}
     useEffect(() => {
 
-        if(user._id !== -1){
+        if(user._id !== "-1"){
+            console.log("Before dispatch: ", user);
             dispatch(login(user));
             alert("Login Success");
+            console.log(JSON.stringify(activeUser));
+            console.log(user);
+
             navigate("/dashboard");
         }
+           
+        
 
         console.log("mounted");
     },[user])
