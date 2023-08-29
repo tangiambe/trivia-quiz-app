@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -28,7 +28,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup"  element={<Signup/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
-          <Route path="/quiz" element={<Quiz/>}/>
+          <Route path="dashboard/quiz/:id" element={<Quiz/>}/>
         </Routes>
 
 

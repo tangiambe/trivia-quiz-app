@@ -9,7 +9,7 @@ export const UserApi = {
         console.log(response);
     },
 
-    getUserByCredentials: async (username, password,setUser) => {
+    getUserByCredentials: async (username, password,setUser, setAuth) => {
         try{
             const response = await fetch(URI + "/login", {
                 // Specify the type of HTTP request being made -> POST
@@ -25,8 +25,10 @@ export const UserApi = {
                 const data = await response.json();
                 console.log("Data: ",data);
                 setUser(data);
+                setAuth({show: true, auth:true});
             } else {
                 console.error("Error:", response.status);
+                setAuth({show:true, auth:false});
             }
            
 

@@ -6,6 +6,74 @@ import { Link } from "react-router-dom";
 
 export const Dashboard = () => {
 
+
+    const allQuizzes = [
+        {
+            id: 1,
+            title: "React Basics",
+            questions: [
+                {
+                question: "What is React?",
+                correctAnswer: "A JavaScript library for building user interfaces",
+                picture: "react_logo.png"
+                },
+                {
+                question: "Which component lifecycle method is called after a component is rendered for the first time?",
+                correctAnswer: "componentDidMount",
+                picture: "lifecycle.png"
+                },
+                {
+                question: "In React, which prop should be used to set the initial value of a component's state?",
+                correctAnswer: "props",
+                picture: "props.png"
+                }
+            ]
+        },
+        {
+            id: 2,
+            title: "React Components",
+            questions: [
+                {
+                question: "What is a functional component in React?",
+                correctAnswer: "A component defined as a JavaScript function",
+                picture: "functional_component.png"
+                },
+                {
+                question: "What is the purpose of props in React?",
+                correctAnswer: "To pass data from parent to child components",
+                picture: "props.png"
+                },
+                {
+                question: "What method can be used to update a component's state?",
+                correctAnswer: "setState",
+                picture: "state.png"
+                }
+            ]
+        },
+        {
+            id: 3,
+            title: "React Routing",
+            questions: [
+                {
+                question: "What is React Router used for?",
+                correctAnswer: "Managing navigation and routing in a React app",
+                picture: "react_router.png"
+                },
+                {
+                question: "How do you define a route in React using React Router?",
+                correctAnswer: "<Route path='/about' component={About} />",
+                picture: "route_definition.png"
+                },
+                {
+                question: "Which component should be rendered when none of the defined routes match?",
+                correctAnswer: "Switch",
+                picture: "switch.png"
+                }
+            ]
+        }
+      ];
+      
+
     const activeUser = useSelector((state) => state.user);
 
     useEffect(() => {
@@ -20,12 +88,12 @@ export const Dashboard = () => {
                         <Card.Body >
                            <Row>
                                 <Col md="10" className="text-white">
-                                    <h1>Hello, user</h1>
+                                    <h1>Hello, {activeUser.firstName}</h1>
                                     <p>Play more</p>
                                 </Col>
 
                                 <Col className="text-white">
-                                    <p>Highest Score</p>
+                                    <p>Current Score</p>
                                 </Col>
                            </Row>
                         </Card.Body>
@@ -49,23 +117,18 @@ export const Dashboard = () => {
                                     </Card.Title>
                                     <Row className="">
                                             
-                                        <Col className="d-flex justify-content-center m-3">
-                                            <Card className="quizSetCard">
-                                                <Card.Title className="text-center pt-2">Quiz Set</Card.Title>
-                                            </Card>
-                                        </Col>
-                                        <Col className="d-flex justify-content-center m-3">
-                                            <Card className="quizSetCard">
-                                                <Card.Title  className="text-center pt-2">Quiz Set</Card.Title>
-                                            </Card>
-                                        </Col>
-                                        <Col className="d-flex justify-content-center m-3">
-                                            <Link to="/quiz" >
-                                                <Card className="quizSetCard">
-                                                    <Card.Title  className="text-center pt-2">Quiz Set</Card.Title>
-                                                </Card>
-                                            </Link>
-                                        </Col>
+                                        {allQuizzes.map((quiz) => (
+
+                                            <Col key={quiz.id} className="d-flex justify-content-center m-3">
+                                                <Link to={`quiz/${quiz.id}`} >
+                                                    <Card className="quizSetCard">
+                                                        <Card.Title  className="text-center pt-2">{quiz.title}</Card.Title>
+                                                    </Card>
+                                                </Link>
+                                            </Col>
+
+                                        ))}
+                                        
                                     </Row>
                                 </Card>
                             </Container>

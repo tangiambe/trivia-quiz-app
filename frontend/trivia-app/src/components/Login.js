@@ -9,6 +9,7 @@ import Card from 'react-bootstrap/Card'
 import '../styles/Login.css'
 import { UserApi } from "../apis/UserApi";
 import { login } from "../redux/userSlice";
+import { Alert } from "react-bootstrap";
 
 
 export const Login = () => {
@@ -24,7 +25,8 @@ export const Login = () => {
         email: "",
         password: "",
     });
-    const [validated, setValidated] = useState(false)
+    const [validated, setValidated] = useState(false);
+    const [auth, setAuth] = useState({show: false, auth: false});
     const activeUser = useSelector((state) => state.user);
     console.log("Active User in Login: ",activeUser);
 
@@ -36,13 +38,9 @@ export const Login = () => {
         const form = event.currentTarget
         if (form.checkValidity() === false){
             event.stopPropagation()
-        } else {
-            setValidated(true)
-            UserApi.getUserByCredentials(event.target.username.value, event.target.password.value, setUser);
-        }
-  
-        event.target.username.value = "";
-        event.target.password.value = "";
+        } 
+            setValidated(true);
+            UserApi.getUserByCredentials(event.target.username.value, event.target.password.value, setUser, setAuth);
 
     }
 
@@ -51,14 +49,16 @@ export const Login = () => {
 
         if(user._id !== "-1"){
             dispatch(login(user));
-            alert("Login Success");
-            navigate("/dashboard");
+
+            setTimeout(()=> {
+                navigate("/dashboard");
+            },600)
         }
            
         
 
         console.log("mounted");
-    },[user, dispatch, navigate])
+    },[user, dispatch, navigate, auth])
 
     return(
         <>
@@ -103,6 +103,16 @@ export const Login = () => {
                         <Button className="w-100" type="submit">Login</Button>
                         <div>
                             <p className="mt-2">Don't have an account? <a href="/signup">Register Now!</a></p>
+                            {auth.show ? (
+
+                                auth.auth ? 
+                                <Alert variant="success">Logged In!</Alert>
+                                :
+                                <Alert variant="danger">Invalid Credentials</Alert>
+                               
+                            ):(
+                                <></>
+                            )}
                         </div>
                 </Form>
             </Container>

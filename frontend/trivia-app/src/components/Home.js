@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 
 export const Home = () => {
 
@@ -39,7 +41,10 @@ export const Home = () => {
                     </Container>
                     <Container className="d-flex mt-4">
                         {activeUser._id !== "-1" ? (
-                            <>
+                            <>  
+                                <Button className="px-4">
+                                    <Link to="/dashboard" className="homeNavLink text-white fw-bold">Dashboard</Link>
+                                </Button>
                             </>
                         ):(
                             <>
