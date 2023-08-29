@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import '../styles/Dashboard.css'
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export const Dashboard = () => {
+
+    const activeUser = useSelector((state) => state.user);
+
+    useEffect(() => {
+        console.log("Active User in Dashboard: ", JSON.stringify(activeUser));
+    }, [activeUser])
 
     return(
         <>
@@ -12,7 +20,7 @@ export const Dashboard = () => {
                         <Card.Body >
                            <Row>
                                 <Col md="10" className="text-white">
-                                    <h1>Hello, User</h1>
+                                    <h1>Hello, user</h1>
                                     <p>Play more</p>
                                 </Col>
 
@@ -52,9 +60,11 @@ export const Dashboard = () => {
                                             </Card>
                                         </Col>
                                         <Col className="d-flex justify-content-center m-3">
-                                            <Card className="quizSetCard">
-                                                <Card.Title  className="text-center pt-2">Quiz Set</Card.Title>
-                                            </Card>
+                                            <Link to="/quiz" >
+                                                <Card className="quizSetCard">
+                                                    <Card.Title  className="text-center pt-2">Quiz Set</Card.Title>
+                                                </Card>
+                                            </Link>
                                         </Col>
                                     </Row>
                                 </Card>
