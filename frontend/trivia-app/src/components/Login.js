@@ -26,6 +26,7 @@ export const Login = () => {
     });
     const [validated, setValidated] = useState(false)
     const activeUser = useSelector((state) => state.user);
+    console.log("Active User in Login: ",activeUser);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -38,12 +39,8 @@ export const Login = () => {
         } else {
             setValidated(true)
             UserApi.getUserByCredentials(event.target.username.value, event.target.password.value, setUser);
-
         }
-       
-
-       
-        
+  
         event.target.username.value = "";
         event.target.password.value = "";
 
@@ -53,19 +50,15 @@ export const Login = () => {
     useEffect(() => {
 
         if(user._id !== "-1"){
-            console.log("Before dispatch: ", user);
             dispatch(login(user));
             alert("Login Success");
-            console.log(JSON.stringify(activeUser));
-            console.log(user);
-
             navigate("/dashboard");
         }
            
         
 
         console.log("mounted");
-    },[user])
+    },[user, dispatch, navigate])
 
     return(
         <>

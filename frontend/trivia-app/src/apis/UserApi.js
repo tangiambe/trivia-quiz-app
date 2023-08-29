@@ -6,6 +6,7 @@ export const UserApi = {
         const response = await fetch(URI + "signup", {
 
         });
+        console.log(response);
     },
 
     getUserByCredentials: async (username, password,setUser) => {
@@ -32,5 +33,25 @@ export const UserApi = {
         } catch(error){
             console.error("Error: ", error);
         }
+
+    //     fetch(URI + "/login",{
+    //         method: "POST",
+    //         body: JSON.stringify({
+    //             username: username,
+    //             password: password,
+    //         }),
+    //         headers: {
+    //             "Content-type": "application/json; charset=UTF-8"
+    //         }
+    //     })
+    //     .then((result) => {
+    //         return result.json();
+    //     })
+    //     .then((data) =>{
+    //         console.log(data)
+    //         setUser(data);
+                       
+    //     })
+    //     .catch((error)=>{console.log(error)});
     }
 }

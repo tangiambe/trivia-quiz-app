@@ -19,18 +19,21 @@ export const userSlice = createSlice({
     reducers: {
         login: (state, action) => {
             const {_id, firstName, lastName, username, email, password} = action.payload;
-            return {
-                ...state,
-                _id,
-                firstName,
-                lastName,
-                username,
-                email,
-                password
-            }
+            console.log(`Action.payload: ${JSON.stringify(action.payload)}`)
+            state._id = _id;
+            state.firstName = firstName;
+            state.lastName = lastName;
+            state.username = username;
+            state.email = email;
+            state.password = password;
         },
         logout: (state) => {
-            state._id = -1;
+            state._id = "-1";
+            state.firstName = "";
+            state.lastName = "";
+            state.username = "";
+            state.email = "";
+            state.password = "";
         }
     }
 })
