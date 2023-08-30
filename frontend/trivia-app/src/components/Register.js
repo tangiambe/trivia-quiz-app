@@ -10,6 +10,8 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { UserApi } from "../apis/UserApi";
+import { useNavigate } from "react-router-dom";
 
 const USERNAME_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -21,7 +23,7 @@ export const Signup = () => {
     const errRef = useRef()
 
      /* Fname */
-     const [fname, setFname] = useState('');
+    const [fname, setFname] = useState('');
 
       /* Lname */
     const [lname, setLname] = useState('');
@@ -53,6 +55,9 @@ export const Signup = () => {
         setConfPasswordShown(confPasswordShown ? false : true);
     };
 
+    const navigate = useNavigate();
+
+
     /* Password Visiblity Icons*/
     const showPwd = <FontAwesomeIcon icon={faEye} />;
     const hidePwd = <FontAwesomeIcon icon={faEyeSlash} />;
@@ -78,6 +83,7 @@ export const Signup = () => {
         setErrMsg('');
     }, [username, password, confirmPw])
 
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const user = USERNAME_REGEX.test(username);
@@ -88,12 +94,18 @@ export const Signup = () => {
             return;
         }
 
+
+        UserApi.createUser(e.target.fname.value, e.target.lname.value, username, email, password);
+       
         setFname('')
         setLname('')
         setUsername('');
         setEmail('')
         setPwd('');
         setConfirmPw('');
+
+        navigate("/login");
+
     }
 
     return (
@@ -270,7 +282,7 @@ export const Signup = () => {
                                     </Form.Text>
                                 </Form.Group>
 
-                                <Button href="/login" className="w-100 mt-4" type="submit" disabled={!validUsername || !validPwd || !validMatch ? true : false}>Create Account</Button>
+                                <Button className="w-100 mt-4" type="submit" disabled={!validUsername || !validPwd || !validMatch ? true : false}>Create Account</Button>
 
                             </Form>
                         </Container>
