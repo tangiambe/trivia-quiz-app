@@ -20,14 +20,17 @@ const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 export const Signup = () => {
 
     /* References */
-    const userRef = useRef();
-    const errRef = useRef();
-    // const pwdRef = useRef();
+    const errRef = useRef()
+
+     /* Fname */
+    const [fname, setFname] = useState('');
+
+      /* Lname */
+    const [lname, setLname] = useState('');
 
     /* Username */
     const [username, setUsername] = useState('');
     const [validUsername, setValidUsername] = useState(false);
-    const [userFocus, setUserFocus] = useState(false);
 
     /* Email */
     const [email, setEmail] = useState('');
@@ -54,16 +57,14 @@ export const Signup = () => {
 
     const navigate = useNavigate();
 
-    const [errMsg, setErrMsg] = useState('');
 
-
+    /* Password Visiblity Icons*/
     const showPwd = <FontAwesomeIcon icon={faEye} />;
     const hidePwd = <FontAwesomeIcon icon={faEyeSlash} />;
 
+    /* Error Messages */
+    const [errMsg, setErrMsg] = useState('');
 
-    useEffect(() => {
-        userRef.current.focus();
-    }, [])
 
     useEffect(() => {
         setValidUsername(USERNAME_REGEX.test(username));
@@ -82,8 +83,9 @@ export const Signup = () => {
         setErrMsg('');
     }, [username, password, confirmPw])
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
         const user = USERNAME_REGEX.test(username);
         const emailAdd = EMAIL_REGEX.test(email)
         const pwd = PWD_REGEX.test(password);
@@ -92,8 +94,11 @@ export const Signup = () => {
             return;
         }
 
+
         UserApi.createUser(e.target.fname.value, e.target.lname.value, username, email, password);
        
+        setFname('')
+        setLname('')
         setUsername('');
         setEmail('')
         setPwd('');
@@ -133,6 +138,8 @@ export const Signup = () => {
                                                 id="fname"
                                                 name="fname"
                                                 placeholder="First Name"
+                                                onChange={(event) => setFname(event.target.value)}
+                                                value={fname}
                                             />
                                         </Form.Group>
                                     </div>
@@ -146,6 +153,8 @@ export const Signup = () => {
                                                 id="lname"
                                                 name="lname"
                                                 placeholder="Last Name"
+                                                onChange={(event) => setLname(event.target.value)}
+                                                value={lname}
                                             />
                                         </Form.Group>
                                     </div>
@@ -160,25 +169,22 @@ export const Signup = () => {
                                     </Form.Label>
 
                                     <Form.Control
+                                        required
                                         type="text"
                                         id="username"
                                         placeholder="Enter a Username"
-                                        ref={userRef}
                                         autoComplete="off"
-                                        onChange={(e) => setUsername(e.target.value)}
+                                        onChange={(event) => setUsername(event.target.value)}
                                         value={username}
-                                        required
                                         aria-invalid={validUsername ? "false" : "true"}
                                         aria-describedby="uidnote"
-                                        onFocus={() => setUserFocus(true)}
-                                        onBlur={() => setUserFocus(false)}
                                     />
-                                    <p id="uidnote" className={userFocus && username && !validUsername ? "instructions" : "offscreen"}>
+                                    <Form.Text id="uidnote" className={username && validUsername ? "offscreen" : "instructions"}>
                                         <FontAwesomeIcon icon={faInfoCircle} />
                                         4 to 24 characters.<br />
                                         Must begin with a letter.<br />
                                         Letters, numbers, underscores, hyphens allowed.
-                                    </p>
+                                    </Form.Text>
 
                                 </Form.Group>
 
@@ -194,7 +200,7 @@ export const Signup = () => {
                                         id="email"
                                         name="email"
                                         placeholder="Enter Email Address"
-                                        onChange={(e) => setEmail(e.target.value)}
+                                        onChange={(event) => setEmail(event.target.value)}
                                         value={email}
                                         required
                                         aria-invalid={validEmail ? "false" : "true"}
@@ -220,7 +226,7 @@ export const Signup = () => {
                                             type={passwordShown ? "text" : "password"}
                                             id="password"
                                             placeholder="Enter a Password"
-                                            onChange={(e) => setPwd(e.target.value)}
+                                            onChange={(event) => setPwd(event.target.value)}
                                             value={password}
                                             required
                                             aria-invalid={validPwd ? "false" : "true"}
@@ -229,7 +235,7 @@ export const Signup = () => {
                                             onBlur={() => setPwdFocus(false)}
                                         />
 
-                                        {/* This Input Group handles the Password Visibility Toggle */}
+                                        {/* This Input Text Group handles the Password Visibility Toggle */}
                                         <InputGroup.Text >
                                             <i onClick={togglePasswordVisiblity}>{passwordShown ? hidePwd : showPwd}</i>
                                         </InputGroup.Text>
@@ -255,7 +261,7 @@ export const Signup = () => {
                                             type={confPasswordShown ? "text" : "password"}
                                             id="confirm_pwd"
                                             placeholder="Confirm Password"
-                                            onChange={(e) => setConfirmPw(e.target.value)}
+                                            onChange={(event) => setConfirmPw(event.target.value)}
                                             value={confirmPw}
                                             required
                                             aria-invalid={validMatch ? "false" : "true"}
@@ -264,7 +270,7 @@ export const Signup = () => {
                                             onBlur={() => setMatchFocus(false)}
                                         />
 
-                                        {/* This Input Group handles the Confirm Password Visibility Toggle */}
+                                        {/* This Input Text Group handles the Confirm Password Visibility Toggle */}
                                         <InputGroup.Text >
                                             <i onClick={toggleConfPasswordVisiblity}>{confPasswordShown ? hidePwd : showPwd}</i>
                                         </InputGroup.Text>
