@@ -20,6 +20,10 @@
     font-family: "Marker Felt", fantasy;
 }
 
+.quizImage{
+    border-radius: 25px;
+}
+
 .quizButton{
     border-radius: 25px;
     background-color: #a890fe;

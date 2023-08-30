@@ -117,7 +117,7 @@ export const Quiz = () => {
 
 
                     <Card className="quizCard py-1 px-1">
-                        <Card.Img height={"250rem"} src="https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVhY3R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=2000&q=60"/>
+                        <Card.Img className="quizImage" height={"275rem"} src="https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVhY3R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=2000&q=60"/>
                         <Container className="d-flex justify-content-center">
                             <Card.Title className="text-center text-white fw-bold py-4" style={{width: "40vw"}}>{quiz.questions[question].question}</Card.Title>
 
