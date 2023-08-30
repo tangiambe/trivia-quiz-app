@@ -170,7 +170,7 @@ export const Signup = () => {
                                         onFocus={() => setUserFocus(true)}
                                         onBlur={() => setUserFocus(false)}
                                     />
-                                    <Form.Text id="uidnote" className={userFocus && username && !validUsername ? "instructions" : "offscreen"}>
+                                    <Form.Text id="uidnote" className={username && validUsername ? "offscreen" : "instructions"}>
                                         <FontAwesomeIcon icon={faInfoCircle} />
                                         4 to 24 characters.<br />
                                         Must begin with a letter.<br />
