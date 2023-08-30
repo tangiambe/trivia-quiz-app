@@ -95,7 +95,7 @@ export const Signup = () => {
         }
 
 
-        UserApi.createUser(e.target.fname.value, e.target.lname.value, username, email, password);
+        UserApi.createUser(event.target.fname.value, event.target.lname.value, username, email, password);
        
         setFname('')
         setLname('')
