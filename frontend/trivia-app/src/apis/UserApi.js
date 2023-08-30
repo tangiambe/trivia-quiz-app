@@ -48,7 +48,7 @@ export const UserApi = {
         
             if(response.ok){
                 const data = await response.json();
-                // console.log("Data: ",data);
+                console.log("Data: ",data);
                 setUser(data);
                 setAuth({show: true, auth:true});
             } else {
