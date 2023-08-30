@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home";
 import { NavBar } from "./components/Navbar";
 import { Login } from "./components/Login";
-import { Signup } from "./components/Register";
+import { Signup } from "./components/Signup";
 import { Dashboard } from "./components/Dashboard";
 import { Quiz } from "./components/Quiz";
 import { useSelector } from "react-redux";
