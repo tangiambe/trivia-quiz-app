@@ -39,12 +39,16 @@ export const Signup = () => {
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => {
         setPasswordShown(passwordShown ? false : true);
-      };
+    };
 
     /* Confirm Password */
     const [confirmPw, setConfirmPw] = useState('');
     const [validMatch, setValidMatch] = useState(false);
     const [matchFocus, setMatchFocus] = useState(false);
+    const [confPasswordShown, setConfPasswordShown] = useState(false);
+    const toggleConfPasswordVisiblity = () => {
+        setConfPasswordShown(confPasswordShown ? false : true);
+    };
 
     const [errMsg, setErrMsg] = useState('');
 
@@ -112,6 +116,7 @@ export const Signup = () => {
                             <Form className="mx-auto w-60" onSubmit={handleSubmit}>
                                 <Row>
                                     <div class="col">
+                                        {/* This Form Group handles the First Name Input */}
                                         <Form.Group className="mt-4 mb-4">
                                             <Form.Label htmlFor="fname">First Name:</Form.Label>
                                             <Form.Control
@@ -124,6 +129,7 @@ export const Signup = () => {
                                         </Form.Group>
                                     </div>
                                     <div class="col">
+                                        {/* This Form Group handles the Last Name Input */}
                                         <Form.Group className="mt-4 mb-4">
                                             <Form.Label htmlFor="lname">Last Name:</Form.Label>
                                             <Form.Control
@@ -136,8 +142,8 @@ export const Signup = () => {
                                         </Form.Group>
                                     </div>
                                 </Row>
-                            
 
+                                {/* This Form Group handles the Username Input */}
                                 <Form.Group className="mt-1 mb-4">
                                     <Form.Label htmlFor="username">
                                         Username:
@@ -168,6 +174,7 @@ export const Signup = () => {
 
                                 </Form.Group>
 
+                                {/* This Form Group handles the Email Input */}
                                 <Form.Group className="mt-4 mb-4">
                                     <Form.Label htmlFor="email">
                                         Email:
@@ -193,20 +200,7 @@ export const Signup = () => {
                                     </p>
                                 </Form.Group>
 
-{/* 
-                                <Form.Group className="mt-1 mb-4">
-                                <Form.Label htmlFor="basic-url">Your vanity URL</Form.Label>
-                                <InputGroup className="mb-3">
-                                <Form.Control id="basic-url" aria-describedby="basic-addon3" />
-                                    <InputGroup.Text id="basic-addon3">
-                                    <i onClick={togglePasswordVisiblity}>
-                                        {passwordShown ? hidePwd : showPwd}
-                                    </i>
-                                    </InputGroup.Text>
-                                </InputGroup>
-                                </Form.Group> */}
-
-
+                                {/* This Form Group handles the Password Input */}
                                 <Form.Group className="mt-1 mb-3">
                                     <Form.Label htmlFor="password">
                                         Password:
@@ -214,56 +208,68 @@ export const Signup = () => {
                                         <FontAwesomeIcon icon={faTimes} className={validPwd || !password ? "hide" : "invalid"} />
                                     </Form.Label>
                                     <InputGroup>
-                                    <Form.Control
-                                        type={passwordShown ? "text" : "password"}
-                                        id="password"
-                                        placeholder="Enter a Password"
-                                        onChange={(e) => setPwd(e.target.value)}
-                                        value={password}
-                                        required
-                                        aria-invalid={validPwd ? "false" : "true"}
-                                        aria-describedby="pwdnote"
-                                        onFocus={() => setPwdFocus(true)}
-                                        onBlur={() => setPwdFocus(false)}
-                                        
-                                    />
-                                    <InputGroup.Text className="mb-3">
-                                        <i onClick={togglePasswordVisiblity}>{passwordShown ? hidePwd : showPwd}</i>
-                                    </InputGroup.Text>
+                                        <Form.Control
+                                            type={passwordShown ? "text" : "password"}
+                                            id="password"
+                                            placeholder="Enter a Password"
+                                            onChange={(e) => setPwd(e.target.value)}
+                                            value={password}
+                                            required
+                                            aria-invalid={validPwd ? "false" : "true"}
+                                            aria-describedby="pwdnote"
+                                            onFocus={() => setPwdFocus(true)}
+                                            onBlur={() => setPwdFocus(false)}
+                                        />
+
+                                        {/* This Input Group handles the Password Visibility Toggle */}
+                                        <InputGroup.Text >
+                                            <i onClick={togglePasswordVisiblity}>{passwordShown ? hidePwd : showPwd}</i>
+                                        </InputGroup.Text>
                                     </InputGroup>
-                                        
-                                    <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
+
+                                    <Form.Text id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
                                         <FontAwesomeIcon icon={faInfoCircle} />
                                         8 to 24 characters.<br />
                                         Must include uppercase and lowercase letters, a number and a special character.<br />
                                         Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
-                                    </p>
+                                    </Form.Text>
                                 </Form.Group>
-                                
+
+                                {/* This Form Group handles the Confirm Password Input */}
                                 <Form.Group>
                                     <Form.Label htmlFor="confirm_pwd">
                                         Confirm Password:
                                         <FontAwesomeIcon icon={faCheck} className={validMatch && confirmPw ? "valid" : "hide"} />
                                         <FontAwesomeIcon icon={faTimes} className={validMatch || !confirmPw ? "hide" : "invalid"} />
                                     </Form.Label>
-                                    <Form.Control
-                                        type="password"
-                                        id="confirm_pwd"
-                                        placeholder="Confirm Password"
-                                        onChange={(e) => setConfirmPw(e.target.value)}
-                                        value={confirmPw}
-                                        required
-                                        aria-invalid={validMatch ? "false" : "true"}
-                                        aria-describedby="confirmnote"
-                                        onFocus={() => setMatchFocus(true)}
-                                        onBlur={() => setMatchFocus(false)}
-                                    />
-                                    <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
+                                    <InputGroup>
+                                        <Form.Control
+                                            type={confPasswordShown ? "text" : "password"}
+                                            id="confirm_pwd"
+                                            placeholder="Confirm Password"
+                                            onChange={(e) => setConfirmPw(e.target.value)}
+                                            value={confirmPw}
+                                            required
+                                            aria-invalid={validMatch ? "false" : "true"}
+                                            aria-describedby="confirmnote"
+                                            onFocus={() => setMatchFocus(true)}
+                                            onBlur={() => setMatchFocus(false)}
+                                        />
+
+                                        {/* This Input Group handles the Confirm Password Visibility Toggle */}
+                                        <InputGroup.Text >
+                                            <i onClick={toggleConfPasswordVisiblity}>{confPasswordShown ? hidePwd : showPwd}</i>
+                                        </InputGroup.Text>
+                                    </InputGroup>
+
+                                    <Form.Text id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
                                         <FontAwesomeIcon icon={faInfoCircle} />
                                         Passwords must match!
-                                    </p>
+                                    </Form.Text>
                                 </Form.Group>
-                                <Button href="/login" className="w-100" type="submit" disabled={!validUsername || !validPwd || !validMatch ? true : false}>Create Account</Button>
+
+                                <Button href="/login" className="w-100 mt-4" type="submit" disabled={!validUsername || !validPwd || !validMatch ? true : false}>Create Account</Button>
+
                             </Form>
                         </Container>
                     </Row>
