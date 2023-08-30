@@ -18,9 +18,13 @@ const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 export const Signup = () => {
 
     /* References */
-    const userRef = useRef();
-    const errRef = useRef();
-    // const pwdRef = useRef();
+    const errRef = useRef()
+
+     /* Fname */
+     const [fname, setFname] = useState('');
+
+      /* Lname */
+    const [lname, setLname] = useState('');
 
     /* Username */
     const [username, setUsername] = useState('');
@@ -50,17 +54,13 @@ export const Signup = () => {
         setConfPasswordShown(confPasswordShown ? false : true);
     };
 
-    const [errMsg, setErrMsg] = useState('');
-
-
-
+    /* Password Visiblity Icons*/
     const showPwd = <FontAwesomeIcon icon={faEye} />;
     const hidePwd = <FontAwesomeIcon icon={faEyeSlash} />;
 
+    /* Error Messages */
+    const [errMsg, setErrMsg] = useState('');
 
-    useEffect(() => {
-        userRef.current.focus();
-    }, [])
 
     useEffect(() => {
         setValidUsername(USERNAME_REGEX.test(username));
@@ -125,6 +125,8 @@ export const Signup = () => {
                                                 id="fname"
                                                 name="fname"
                                                 placeholder="First Name"
+                                                onChange={(e) => setFname(e.target.value)}
+                                                value={fname}
                                             />
                                         </Form.Group>
                                     </div>
@@ -138,6 +140,8 @@ export const Signup = () => {
                                                 id="lname"
                                                 name="lname"
                                                 placeholder="Last Name"
+                                                onChange={(e) => setLname(e.target.value)}
+                                                value={lname}
                                             />
                                         </Form.Group>
                                     </div>
@@ -152,25 +156,24 @@ export const Signup = () => {
                                     </Form.Label>
 
                                     <Form.Control
+                                        required
                                         type="text"
                                         id="username"
                                         placeholder="Enter a Username"
-                                        ref={userRef}
                                         autoComplete="off"
                                         onChange={(e) => setUsername(e.target.value)}
                                         value={username}
-                                        required
                                         aria-invalid={validUsername ? "false" : "true"}
                                         aria-describedby="uidnote"
                                         onFocus={() => setUserFocus(true)}
                                         onBlur={() => setUserFocus(false)}
                                     />
-                                    <p id="uidnote" className={userFocus && username && !validUsername ? "instructions" : "offscreen"}>
+                                    <Form.Text id="uidnote" className={userFocus && username && !validUsername ? "instructions" : "offscreen"}>
                                         <FontAwesomeIcon icon={faInfoCircle} />
                                         4 to 24 characters.<br />
                                         Must begin with a letter.<br />
                                         Letters, numbers, underscores, hyphens allowed.
-                                    </p>
+                                    </Form.Text>
 
                                 </Form.Group>
 
