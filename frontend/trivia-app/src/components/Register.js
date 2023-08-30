@@ -29,7 +29,6 @@ export const Signup = () => {
     /* Username */
     const [username, setUsername] = useState('');
     const [validUsername, setValidUsername] = useState(false);
-    const [userFocus, setUserFocus] = useState(false);
 
     /* Email */
     const [email, setEmail] = useState('');
@@ -167,8 +166,6 @@ export const Signup = () => {
                                         value={username}
                                         aria-invalid={validUsername ? "false" : "true"}
                                         aria-describedby="uidnote"
-                                        onFocus={() => setUserFocus(true)}
-                                        onBlur={() => setUserFocus(false)}
                                     />
                                     <Form.Text id="uidnote" className={username && validUsername ? "offscreen" : "instructions"}>
                                         <FontAwesomeIcon icon={faInfoCircle} />
@@ -226,7 +223,7 @@ export const Signup = () => {
                                             onBlur={() => setPwdFocus(false)}
                                         />
 
-                                        {/* This Input Group handles the Password Visibility Toggle */}
+                                        {/* This Input Text Group handles the Password Visibility Toggle */}
                                         <InputGroup.Text >
                                             <i onClick={togglePasswordVisiblity}>{passwordShown ? hidePwd : showPwd}</i>
                                         </InputGroup.Text>
@@ -261,7 +258,7 @@ export const Signup = () => {
                                             onBlur={() => setMatchFocus(false)}
                                         />
 
-                                        {/* This Input Group handles the Confirm Password Visibility Toggle */}
+                                        {/* This Input Text Group handles the Confirm Password Visibility Toggle */}
                                         <InputGroup.Text >
                                             <i onClick={toggleConfPasswordVisiblity}>{confPasswordShown ? hidePwd : showPwd}</i>
                                         </InputGroup.Text>
