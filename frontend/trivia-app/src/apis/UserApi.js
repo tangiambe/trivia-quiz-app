@@ -2,11 +2,36 @@ const URI = "http://127.0.0.1:5000";
 
 export const UserApi = {
 
-    createUser: async () => {
-        const response = await fetch(URI + "signup", {
+    createUser: async (firstName, lastName, username, email, password) => {
 
-        });
-        console.log(response);
+        try{
+            const response = await fetch(URI + "signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    firstName: firstName,
+                    lastName: lastName,
+                    username: username,
+                    email: email,
+                    password: password
+                })
+            });
+    
+            // console.log(response);
+            if(response.ok){
+                const data = await response.json();
+                console.log(data);
+    
+            } else{
+                console.error("Error: ", response.status);
+            }
+
+       } catch(error){
+            console.error("Error: ", error);
+       }
+
     },
 
     getUserByCredentials: async (username, password,setUser, setAuth) => {
@@ -23,7 +48,7 @@ export const UserApi = {
         
             if(response.ok){
                 const data = await response.json();
-                console.log("Data: ",data);
+                // console.log("Data: ",data);
                 setUser(data);
                 setAuth({show: true, auth:true});
             } else {

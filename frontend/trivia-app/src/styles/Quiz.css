@@ -3,6 +3,8 @@
     /* 1 */
     background-color: #ea8d8d;
     background-image: linear-gradient(66deg, #ea8d8d 0%, #a890fe 77%);
+    background-position: center;
+    background-size: cover;
 
     height: 100vh;
 }
@@ -11,6 +13,11 @@
     background-color: #1e2833;
     border-radius: 25px;
     box-shadow: 20px 5px 2px rgba(91, 50, 83,0.2);
+    font-family: "Marker Felt", fantasy;
+}
+
+.quizModal{
+    font-family: "Marker Felt", fantasy;
 }
 
 .quizButton{

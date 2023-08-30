@@ -31,7 +31,7 @@ export const NavBar = () => {
 
     return (
         <>
-           <Navbar expand="lg" className="bg-body-tertiary" >
+           <Navbar expand="lg" className="trivNavBar bg-body-tertiary" >
             <Container>
                 <Navbar.Brand className="fw-bold">
                     <Link to="/" className="navLink">TriviYay!</Link>

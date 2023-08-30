@@ -19,7 +19,7 @@ export const userSlice = createSlice({
     reducers: {
         login: (state, action) => {
             const {_id, firstName, lastName, username, email, password} = action.payload;
-            console.log(`Action.payload: ${JSON.stringify(action.payload)}`)
+            // console.log(`Action.payload: ${JSON.stringify(action.payload)}`)
             state._id = _id;
             state.firstName = firstName;
             state.lastName = lastName;

@@ -8,14 +8,14 @@ import { Login } from "./components/Login";
 import { Signup } from "./components/Signup";
 import { Dashboard } from "./components/Dashboard";
 import { Quiz } from "./components/Quiz";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 
 
 function App() {
  
-  const activeUser = useSelector((state) => state.user);
-  console.log(`Active User in App.js: ${JSON.stringify(activeUser)}`);
+  // const activeUser = useSelector((state) => state.user);
+  // console.log(`Active User in App.js: ${JSON.stringify(activeUser)}`);
 
   return (
     <BrowserRouter>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
 import Form from 'react-bootstrap/Form';
@@ -27,8 +27,8 @@ export const Login = () => {
     });
     const [validated, setValidated] = useState(false);
     const [auth, setAuth] = useState({show: false, auth: false});
-    const activeUser = useSelector((state) => state.user);
-    console.log("Active User in Login: ",activeUser);
+    // const activeUser = useSelector((state) => state.user);
+    // console.log("Active User in Login: ",activeUser);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -57,7 +57,7 @@ export const Login = () => {
            
         
 
-        console.log("mounted");
+        // console.log("mounted");
     },[user, dispatch, navigate, auth])
 
     return(
