@@ -29,7 +29,7 @@ export const Login = () => {
         email: "",
         password: "",
     });
-    const [validated, setValidated] = useState(false);
+
     const [auth, setAuth] = useState({show: false, auth: false});
     // const activeUser = useSelector((state) => state.user);
     // console.log("Active User in Login: ",activeUser);
@@ -39,13 +39,7 @@ export const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const form = event.currentTarget
-        if (form.checkValidity() === false){
-            event.stopPropagation()
-        } 
-            setValidated(true);
-            UserApi.getUserByCredentials(event.target.username.value, event.target.password.value, setUser, setAuth);
-
+        UserApi.getUserByCredentials(event.target.username.value, event.target.password.value, setUser, setAuth);
     }
 
     // Arrow syntax: () => {}
@@ -87,9 +81,7 @@ export const Login = () => {
             {/* This container holds the login form */}
             <Container>
                 {/* mx-auto refers to the CSS property margin: auto and 'w' refers to width */}
-                <Form className="mx-auto w-60 needs-validation" 
-                noValidate 
-                validated = {validated}
+                <Form className="mx-auto w-60"
                 onSubmit={handleSubmit}>
                     <Form.Group className="mt-4 mb-4">
                         <Form.Label htmlFor="username">Username</Form.Label>
