@@ -79,8 +79,8 @@ export const Signup = () => {
         setErrMsg('');
     }, [username, password, confirmPw])
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = (event) => {
+        event.preventDefault();
         const user = USERNAME_REGEX.test(username);
         const emailAdd = EMAIL_REGEX.test(email)
         const pwd = PWD_REGEX.test(password);
@@ -89,6 +89,8 @@ export const Signup = () => {
             return;
         }
 
+        setFname('')
+        setLname('')
         setUsername('');
         setEmail('')
         setPwd('');
@@ -125,7 +127,7 @@ export const Signup = () => {
                                                 id="fname"
                                                 name="fname"
                                                 placeholder="First Name"
-                                                onChange={(e) => setFname(e.target.value)}
+                                                onChange={(event) => setFname(event.target.value)}
                                                 value={fname}
                                             />
                                         </Form.Group>
@@ -140,7 +142,7 @@ export const Signup = () => {
                                                 id="lname"
                                                 name="lname"
                                                 placeholder="Last Name"
-                                                onChange={(e) => setLname(e.target.value)}
+                                                onChange={(event) => setLname(event.target.value)}
                                                 value={lname}
                                             />
                                         </Form.Group>
@@ -161,7 +163,7 @@ export const Signup = () => {
                                         id="username"
                                         placeholder="Enter a Username"
                                         autoComplete="off"
-                                        onChange={(e) => setUsername(e.target.value)}
+                                        onChange={(event) => setUsername(event.target.value)}
                                         value={username}
                                         aria-invalid={validUsername ? "false" : "true"}
                                         aria-describedby="uidnote"
@@ -189,7 +191,7 @@ export const Signup = () => {
                                         id="email"
                                         name="email"
                                         placeholder="Enter Email Address"
-                                        onChange={(e) => setEmail(e.target.value)}
+                                        onChange={(event) => setEmail(event.target.value)}
                                         value={email}
                                         required
                                         aria-invalid={validEmail ? "false" : "true"}
@@ -215,7 +217,7 @@ export const Signup = () => {
                                             type={passwordShown ? "text" : "password"}
                                             id="password"
                                             placeholder="Enter a Password"
-                                            onChange={(e) => setPwd(e.target.value)}
+                                            onChange={(event) => setPwd(event.target.value)}
                                             value={password}
                                             required
                                             aria-invalid={validPwd ? "false" : "true"}
@@ -250,7 +252,7 @@ export const Signup = () => {
                                             type={confPasswordShown ? "text" : "password"}
                                             id="confirm_pwd"
                                             placeholder="Confirm Password"
-                                            onChange={(e) => setConfirmPw(e.target.value)}
+                                            onChange={(event) => setConfirmPw(event.target.value)}
                                             value={confirmPw}
                                             required
                                             aria-invalid={validMatch ? "false" : "true"}
