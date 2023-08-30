@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import logo from "../images/Logo.svg";
 
 
 export const Home = () => {
@@ -25,9 +26,8 @@ export const Home = () => {
                 <Col id="landingPagePictureSection" className="d-flex flex-column justify-content-center">
                     <Container className="d-flex justify-content-center">
                         <img
-                            src="https://plus.unsplash.com/premium_photo-1677564813959-d64c2c3d74f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-                            alt="bikes"
-                            className="w-50"
+                            style={{ width: 500, height: 500 }}
+                            src={logo} alt="main logo"
                         />
                     </Container>
                 </Col>
