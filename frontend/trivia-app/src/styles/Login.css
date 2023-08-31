@@ -12,6 +12,14 @@
     color: #ffffff;
 }
 
+#login-img {
+  width: 400px;
+  height: 400px;
+  float:left;
+  margin-left: -43px;
+
+}
+
 #loginCard {
     width: 580px;
     background-color: #1e2833;

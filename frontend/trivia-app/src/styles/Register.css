@@ -10,6 +10,14 @@
     color: #ffffff;
 }
 
+#register-img{
+    width: 450px;
+    height: 450px;
+    float:right;
+    margin-right: 34px;
+
+}
+
 #signupCard {
     width: 580px;
     background-color: #1e2833;

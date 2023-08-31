@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import logo from "../images/Logo.svg";
+import logo from "../images/home-logo.svg";
 
 
 export const Home = () => {
@@ -27,7 +27,7 @@ export const Home = () => {
                     <Container className="d-flex justify-content-center">
                         <img
                             style={{ width: 500, height: 500 }}
-                            src={logo} alt="main logo"
+                            src={logo} alt="home logo"
                         />
                     </Container>
                 </Col>

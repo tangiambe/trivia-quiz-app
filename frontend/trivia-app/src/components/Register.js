@@ -12,6 +12,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { UserApi } from "../apis/UserApi";
 import { useNavigate } from "react-router-dom";
+import logo from "../images/register-logo.svg";
 
 const USERNAME_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -112,6 +113,12 @@ export const Register = () => {
         <>
             <Container fluid id="wrapper" className="d-flex align-items-center">
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                <Container>
+                <img
+                    id="register-img"
+                    src={logo} alt="register logo"
+                />
+                </Container>
                 <Card id='signupCard' className="mx-auto ">
                     <Row id="signupPageRow">
                         {/* This container holds the register header */}
