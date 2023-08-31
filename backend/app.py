@@ -1,11 +1,8 @@
-from flask import Flask, jsonify, request, make_response, render_template, redirect, session
+from flask import Flask, jsonify, request, make_response
 from flask_pymongo import PyMongo
 from flask_cors import CORS, cross_origin
 from bson.objectid import ObjectId
-from flask_bcrypt import Bcrypt
 import json
-
-import os
 
 app = Flask(__name__)
 
@@ -21,39 +18,10 @@ try:
 except:
         print("ERROR- cannot connect to db")
 
-
-"""@app.route("/register", methods=["POST"])
-@cross_origin()
-def createUser():
-   
-    json_data = request.json
-    print(json_data["username"])
-    db.users.insert_one(
-        {
-        "firstName": json_data["firstName"] ,
-        "lastName": json_data["lastName"] ,
-        "username": json_data["username"] ,
-        "email": json_data["email"] ,
-        "password": json_data["password"]
-        }
-    )
-    return jsonify(json_data)
-
-@app.route("/login", methods=["POST"])
-@cross_origin()
-def getUserByCredentials():
-    json_data = request.json
-    user = db.users.find_one({"username": json_data["username"], "password": json_data["password"]})
-    
-    # We have to serialize the MongoDB Object ID into a String so that it can be properly jsonifyed
-    user["_id"] = str(user["_id"])
-    return jsonify(user)"""
-
 #LOGIN ROUTE
 @app.route("/login", methods= ["GET", "POST"])
 @cross_origin()
-def login(): 
-    # app.secret_key = os.urandom(24) 
+def login():  
     if request.method == "POST": 
         username = request.json.get("username")
         password = request.json.get("password")
@@ -66,26 +34,11 @@ def login():
         except Exception as e :
             error = "Invalid username or password"
             raise ValueError(error)
-        
-        
-        # if user and user["password"] == password:
-        #     session["username"] = username
-        #     pass 
-        # if user == None:
-        #     print(user, password)
-      
-        # return jsonify(user)
-        
-    
 
 #REGISTER ROUTE 
 @app.route("/register", methods = ["POST"])
 @cross_origin()
 def register(): 
-    # app.secret_key = os.urandom(24)
-    
-   
-   
     first_name = request.json.get("firstName")
     last_name = request.json.get("lastName")
     username = request.json.get("username")
@@ -113,90 +66,40 @@ def register():
     }
     )
     db.users.insert_one(new_user)
-    #  return redirect("/login/")
     return jsonify(new_user)
-
-#DASHBOARD ROUTE 
-# @app.route("/dashboard/", methods=["GET", "POST"])
-# def dashboard(): 
-#      if "username" in session: 
-#          logged_in_username = session["username"]
-
-#          return redirect("/dashboard/")  
-
-#      else: 
-#          error = "Please login"
-#          return redirect("/login/", error=error)
-
-# ADD QUESTION SET ONE ROUTE
-@app.route("/addsetone/", methods=["PUT"])
-@cross_origin()
-def createQuizOne():
-   if request.method == "PUT":
-    json_data = request.json
-    db.Set_One.insert_one(
-        {
-        "Question": json_data["Question"] ,
-        "Answer": json_data["Answer"] ,
-        }
-    )
-    return jsonify(json_data)
-
-# ADD QUESTION SET TWO ROUTE
-@app.route("/addsettwo/", methods=["PUT"])
-@cross_origin()
-def createQuizTwo():
-   if request.method == "PUT":
-    json_data = request.json
-    db.Set_Two.insert_one(
-        {
-        "Question": json_data["Question"] ,
-        "Answer": json_data["Answer"] ,
-        }
-    )
-    return jsonify(json_data)    
-
-#QUIZ SET ROUTE
+            
+#GET ALL QUIZ SETS ROUTE
 @app.route("/quizsets", methods=["GET"])
 @cross_origin()
 def getAllQuizSets():
-    #  collection = [{"Question": doc["Question"], "Answer": doc["Answer"]} for doc in db.Set_One.find()]
-    #  collectionTwo = [{"Question": doc["Question"], "Answer": doc["Answer"]} for doc in db.Set_Two.find()]
-    
     quizSets = [quiz for quiz in db.quizzes.find()]
     response = []
-    # if quizSets:
+    if quizSets:
         
-    for quiz in quizSets:
-        quiz["_id"] = str(quiz["_id"])
-        response.append(quiz)
+        for quiz in quizSets:
+            quiz["_id"] = str(quiz["_id"])
+            response.append(quiz)
         
-    return jsonify(response);
-    # else:
-    #     error = "No quiz sets available"
-    #     return jsonify(error);
+        return jsonify(response)
+    else:
+        error = "No quiz sets available"
+        return jsonify(error)
 
 
 #QUIZ SET BY ID ROUTE 
 @app.route("/quizset/<id>", methods=["GET"])
 @cross_origin()
 def getQuizSetByID(id): 
-    # if db.Set_One["_id"] == id or db.Set_Two["_id"] == id:
-    #     setOne = [{"Question": doc["Question"], "Answer": doc["Answer"]} for doc in db.Set_One.find()]
-    #     setTwo = [{"Question": doc["Question"], "Answer": doc["Answer"]} for doc in db.Set_Two.find()]
-    #     return jsonify(setOne, setTwo)
     quizset = db.quizzes.find_one({"_id": ObjectId(id)})
     if quizset != None: 
         quizset["_id"] = str(quizset["_id"])
-        return jsonify(quizset);
+        return jsonify(quizset)
     else:
         error = "Not a valid Quiz Id"
-        return jsonify(error)
-    
-    
-    
-    
-@app.route("/quizset", methods=["POST"])
+        return jsonify(error)  
+
+#CREATE QUIZ SET ROUTE    
+@app.route("/createquizset", methods=["POST"])
 @cross_origin()
 def createQuizSet():
     json_data = request.json
@@ -208,8 +111,8 @@ def createQuizSet():
         }
     )
     return jsonify(json_data)
-    
 
+#POPULATE ROUTE     
 @app.route("/populate", methods=["GET"])
 @cross_origin()
 def populateDb():
@@ -218,16 +121,12 @@ def populateDb():
     quizCollection = json.load(quizFile)
     
     try:
-        db.quizzes.insert_many(quizCollection);
+        db.quizzes.insert_many(quizCollection)
         message = jsonify({"message": "populated"})
         response = make_response(message, 201)
-        return response;
+        return response
     except Exception as e:
-        raise ValueError(e);
-
-
-
-
+        raise ValueError(e)
 
 if __name__ == "__main__":
     app.run(debug=True)
