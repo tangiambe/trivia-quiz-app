@@ -1,8 +1,6 @@
 #wrapper {
-
     background-color: #ea8d8d;
     background-image: linear-gradient(66deg, #ea8d8d 0%, #a890fe 77%);
-
     height: 120vh;
 }
 
@@ -10,12 +8,11 @@
     color: #ffffff;
 }
 
-#register-img{
+#register-img {
     width: 450px;
     height: 450px;
-    float:right;
+    float: right;
     margin-right: 34px;
-
 }
 
 #signupCard {

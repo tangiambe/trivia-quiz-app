@@ -3,6 +3,7 @@ import Container from "react-bootstrap/esm/Container";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card'
 import InputGroup from 'react-bootstrap/InputGroup'
 import '../styles/Register.css'
@@ -14,19 +15,20 @@ import { UserApi } from "../apis/UserApi";
 import { useNavigate } from "react-router-dom";
 import logo from "../images/register-logo.svg";
 
+/* Regular Expressions for Input Validation */
 const USERNAME_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
 export const Register = () => {
 
-    /* References */
+    /* Reference */
     const errRef = useRef()
 
-     /* Fname */
+    /* First Name */
     const [fname, setFname] = useState('');
 
-      /* Lname */
+    /* Last Name */
     const [lname, setLname] = useState('');
 
     /* Username */
@@ -56,15 +58,15 @@ export const Register = () => {
         setConfPasswordShown(confPasswordShown ? false : true);
     };
 
-    const navigate = useNavigate();
-
-
     /* Password Visiblity Icons*/
     const showPwd = <FontAwesomeIcon icon={faEye} />;
     const hidePwd = <FontAwesomeIcon icon={faEyeSlash} />;
 
     /* Error Messages */
     const [errMsg, setErrMsg] = useState('');
+
+    /* Navigation */
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -95,9 +97,8 @@ export const Register = () => {
             return;
         }
 
-
         UserApi.createUser(event.target.fname.value, event.target.lname.value, username, email, password);
-       
+
         setFname('')
         setLname('')
         setUsername('');
@@ -113,14 +114,17 @@ export const Register = () => {
         <>
             <Container fluid id="wrapper" className="d-flex align-items-center">
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+
                 <Container>
-                <img
-                    id="register-img"
-                    src={logo} alt="register logo"
-                />
+                    <img
+                        id="register-img"
+                        src={logo} alt="register logo"
+                    />
                 </Container>
+
                 <Card id='signupCard' className="mx-auto ">
                     <Row id="signupPageRow">
+
                         {/* This container holds the register header */}
                         <Container className="mt-1">
                             <section className="mx-auto">
@@ -131,11 +135,12 @@ export const Register = () => {
                             </div>
                         </Container>
 
-                        {/* This container holds the register form */}
+                        {/* This container holds the registration form */}
                         <Container>
                             <Form className="mx-auto w-60" onSubmit={handleSubmit}>
                                 <Row>
-                                    <div class="col">
+
+                                    <Col>
                                         {/* This Form Group handles the First Name Input */}
                                         <Form.Group className="mt-4 mb-4">
                                             <Form.Label htmlFor="fname">First Name:</Form.Label>
@@ -149,8 +154,9 @@ export const Register = () => {
                                                 value={fname}
                                             />
                                         </Form.Group>
-                                    </div>
-                                    <div class="col">
+                                    </Col>
+
+                                    <Col>
                                         {/* This Form Group handles the Last Name Input */}
                                         <Form.Group className="mt-4 mb-4">
                                             <Form.Label htmlFor="lname">Last Name:</Form.Label>
@@ -164,11 +170,13 @@ export const Register = () => {
                                                 value={lname}
                                             />
                                         </Form.Group>
-                                    </div>
+                                    </Col>
+
                                 </Row>
 
                                 {/* This Form Group handles the Username Input */}
                                 <Form.Group className="mt-1 mb-4">
+
                                     <Form.Label htmlFor="username">
                                         Username:
                                         <FontAwesomeIcon icon={faCheck} className={validUsername ? "valid" : "hide"} />
@@ -186,6 +194,7 @@ export const Register = () => {
                                         aria-invalid={validUsername ? "false" : "true"}
                                         aria-describedby="uidnote"
                                     />
+
                                     <Form.Text id="uidnote" className={username && validUsername ? "offscreen" : "instructions"}>
                                         <FontAwesomeIcon icon={faInfoCircle} />
                                         4 to 24 characters.<br />
@@ -197,11 +206,13 @@ export const Register = () => {
 
                                 {/* This Form Group handles the Email Input */}
                                 <Form.Group className="mt-4 mb-4">
+
                                     <Form.Label htmlFor="email">
                                         Email:
                                         <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
                                         <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
                                     </Form.Label>
+
                                     <Form.Control
                                         type="email"
                                         id="email"
@@ -215,19 +226,23 @@ export const Register = () => {
                                         onFocus={() => setEmailFocus(true)}
                                         onBlur={() => setEmailFocus(false)}
                                     />
-                                    <p id="emailnote" className={emailFocus && !validEmail ? "instructions" : "offscreen"}>
+
+                                    <Form.Text id="emailnote" className={emailFocus && !validEmail ? "instructions" : "offscreen"}>
                                         <FontAwesomeIcon icon={faInfoCircle} />
                                         Please enter a valid e-mail address.
-                                    </p>
+                                    </Form.Text>
+
                                 </Form.Group>
 
                                 {/* This Form Group handles the Password Input */}
                                 <Form.Group className="mt-1 mb-3">
+
                                     <Form.Label htmlFor="password">
                                         Password:
                                         <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
                                         <FontAwesomeIcon icon={faTimes} className={validPwd || !password ? "hide" : "invalid"} />
                                     </Form.Label>
+
                                     <InputGroup>
                                         <Form.Control
                                             type={passwordShown ? "text" : "password"}
@@ -246,6 +261,7 @@ export const Register = () => {
                                         <InputGroup.Text >
                                             <i onClick={togglePasswordVisiblity}>{passwordShown ? hidePwd : showPwd}</i>
                                         </InputGroup.Text>
+                                        
                                     </InputGroup>
 
                                     <Form.Text id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
@@ -258,11 +274,13 @@ export const Register = () => {
 
                                 {/* This Form Group handles the Confirm Password Input */}
                                 <Form.Group>
+                                    
                                     <Form.Label htmlFor="confirm_pwd">
                                         Confirm Password:
                                         <FontAwesomeIcon icon={faCheck} className={validMatch && confirmPw ? "valid" : "hide"} />
                                         <FontAwesomeIcon icon={faTimes} className={validMatch || !confirmPw ? "hide" : "invalid"} />
                                     </Form.Label>
+
                                     <InputGroup>
                                         <Form.Control
                                             type={confPasswordShown ? "text" : "password"}
@@ -281,12 +299,14 @@ export const Register = () => {
                                         <InputGroup.Text >
                                             <i onClick={toggleConfPasswordVisiblity}>{confPasswordShown ? hidePwd : showPwd}</i>
                                         </InputGroup.Text>
+
                                     </InputGroup>
 
                                     <Form.Text id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
                                         <FontAwesomeIcon icon={faInfoCircle} />
                                         Passwords must match!
                                     </Form.Text>
+
                                 </Form.Group>
 
                                 <Button className="w-100 mt-4" type="submit" disabled={!validUsername || !validPwd || !validMatch ? true : false}>Create Account</Button>

@@ -4,7 +4,7 @@ export const UserApi = {
 
     createUser: async (firstName, lastName, username, email, password) => {
 
-        try{
+        try {
             const response = await fetch(URI + "/register", {
                 method: "POST",
                 headers: {
@@ -18,24 +18,23 @@ export const UserApi = {
                     password: password
                 })
             });
-    
-            // console.log(response);
-            if(response.ok){
+
+            if (response.ok) {
                 const data = await response.json();
                 console.log(data);
-    
-            } else{
+
+            } else {
                 console.error("Error: ", response.status);
             }
 
-       } catch(error){
+        } catch (error) {
             console.error("Error: ", error);
-       }
+        }
 
     },
 
-    getUserByCredentials: async (username, password,setUser, setAuth) => {
-        try{
+    getUserByCredentials: async (username, password, setUser, setAuth) => {
+        try {
             const response = await fetch(URI + "/login", {
                 // Specify the type of HTTP request being made -> POST
                 method: "POST",
@@ -43,42 +42,21 @@ export const UserApi = {
                     "Content-Type": "application/json"
                 },
                 // Send the username and password as a JSON object
-                body: JSON.stringify({username: username, password: password})
+                body: JSON.stringify({ username: username, password: password })
             });
-        
-            if(response.ok){
+
+            if (response.ok) {
                 const data = await response.json();
-                console.log("Data: ",data);
+                console.log("Data: ", data);
                 setUser(data);
-                setAuth({show: true, auth:true});
+                setAuth({ show: true, auth: true });
             } else {
                 console.error("Error:", response.status);
-                setAuth({show:true, auth:false});
+                setAuth({ show: true, auth: false });
             }
-           
 
-        } catch(error){
+        } catch (error) {
             console.error("Error: ", error);
         }
-
-    //     fetch(URI + "/login",{
-    //         method: "POST",
-    //         body: JSON.stringify({
-    //             username: username,
-    //             password: password,
-    //         }),
-    //         headers: {
-    //             "Content-type": "application/json; charset=UTF-8"
-    //         }
-    //     })
-    //     .then((result) => {
-    //         return result.json();
-    //     })
-    //     .then((data) =>{
-    //         console.log(data)
-    //         setUser(data);
-                       
-    //     })
-    //     .catch((error)=>{console.log(error)});
     }
 }

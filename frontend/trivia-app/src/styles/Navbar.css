@@ -1,8 +1,8 @@
-.navLink{
+.navLink {
     text-decoration: none;
     color: black;
 }
 
-.trivNavBar{
+.trivNavBar {
     z-index: 1000;
 }
