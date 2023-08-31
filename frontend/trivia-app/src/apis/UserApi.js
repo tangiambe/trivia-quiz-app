@@ -5,7 +5,7 @@ export const UserApi = {
     createUser: async (firstName, lastName, username, email, password) => {
 
         try{
-            const response = await fetch(URI + "/signup", {
+            const response = await fetch(URI + "/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
