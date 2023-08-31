@@ -10,6 +10,13 @@
     color: #ffffff;
 }
 
+#img {
+    width: 500px;
+    height: 500px;
+    float:right;
+    margin-right: -2px;
+}
+
 #signupCard {
     width: 580px;
     background-color: #1e2833;
