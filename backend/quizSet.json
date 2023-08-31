@@ -1,0 +1,327 @@
+[
+    {
+        "title": "React Trivia",
+        "questions": [
+            {
+            "correctAnswer": "A JavaScript library for building user interfaces",
+            "options": [
+                "A programming language",
+                "A database management system",
+                "A text editor",
+                "A JavaScript library for building user interfaces"
+            ],
+            "picture": "react_logo.png",
+            "question": "What is React?"
+            },
+            {
+            "correctAnswer": "componentDidMount",
+            "options": [
+                "componentWillMount",
+                "componentDidMount",
+                "componentRendered",
+                "componentUpdated"
+            ],
+            "picture": "lifecycle.png",
+            "question": "Which component lifecycle method is called after a component is rendered for the first time?"
+            },
+            {
+            "correctAnswer": "props",
+            "options": [
+                "state",
+                "props",
+                "initialState",
+                "values"
+            ],
+            "picture": "props.png",
+            "question": "In React, which prop should be used to set the initial value of a component's state?"
+            },
+            {
+            "correctAnswer": "render",
+            "options": [
+                "display",
+                "render",
+                "show",
+                "paint"
+            ],
+            "picture": "render.png",
+            "question": "What method is responsible for rendering the HTML representation of a React component?"
+            },
+            {
+            "correctAnswer": "Virtual DOM",
+            "options": [
+                "Real DOM",
+                "Virtual DOM",
+                "Shadow DOM",
+                "HTML DOM"
+            ],
+            "picture": "virtual_dom.png",
+            "question": "What concept in React helps improve performance by minimizing direct manipulation of the actual DOM?"
+            },
+            {
+            "correctAnswer": "JSX",
+            "options": [
+                "ES6",
+                "JSX",
+                "HTMLX",
+                "TSX"
+            ],
+            "picture": "jsx.png",
+            "question": "What syntax extension is used for describing the structure of UI components in React?"
+            },
+            {
+            "correctAnswer": "state",
+            "options": [
+                "props",
+                "state",
+                "context",
+                "refs"
+            ],
+            "picture": "state.png",
+            "question": "In React, what represents the local mutable state of a component?"
+            },
+            {
+            "correctAnswer": "useState",
+            "options": [
+                "setState",
+                "useState",
+                "set",
+                "modifyState"
+            ],
+            "picture": "hooks.png",
+            "question": "Which React Hook is used to add state to functional components?"
+            },
+            {
+            "correctAnswer": "Redux",
+            "options": [
+                "Flux",
+                "MobX",
+                "Redux",
+                "Apollo Client"
+            ],
+            "picture": "redux.png",
+            "question": "Which library is commonly used for managing global state in React applications?"
+            },
+            {
+            "correctAnswer": "Babel",
+            "options": [
+                "Webpack",
+                "Gulp",
+                "Babel",
+                "Node.js"
+            ],
+            "picture": "babel.png",
+            "question": "Which tool is used to transpile modern JavaScript code into compatible versions for browsers?"
+            }
+    ]
+    },
+    {
+        "title": "General Knowledge Trivia",
+        "questions": [
+            {
+                "question": "Which natural wonder is known for being the world's largest coral reef system?",
+                "correctAnswer": "The Great Barrier Reef",
+                "options": [
+                    "The Amazon Rainforest",
+                    "The Grand Canyon",
+                    "The Great Barrier Reef",
+                    "Mount Everest"
+                ]
+            },
+            {
+                "correctAnswer": "Mona Lisa",
+                "options": [
+                    "Starry Night",
+                    "The Persistence of Memory",
+                    "The Scream",
+                    "Mona Lisa"
+                ],
+                "question": "Which painting by Leonardo da Vinci is famously known for the subject's enigmatic smile?"
+            },
+            {
+            "correctAnswer": "Albert Einstein",
+            "options": [
+                "Isaac Newton",
+                "Galileo Galilei",
+                "Albert Einstein",
+                "Nikola Tesla"
+            ],
+            "question": "Who formulated the theory of relativity?"
+            },
+            {
+            "correctAnswer": "France",
+            "options": [
+                "Italy",
+                "France",
+                "Spain",
+                "Greece"
+            ],
+            "question": "In which country is the Eiffel Tower located?"
+            },
+            {
+            "correctAnswer": "Vincent van Gogh",
+            "options": [
+                "Pablo Picasso",
+                "Claude Monet",
+                "Vincent van Gogh",
+                "Salvador Dalí"
+            ],
+            "question": "Who painted 'The Starry Night'?"
+            },
+            {
+            "correctAnswer": "William Shakespeare",
+            "options": [
+                "Mark Twain",
+                "Charles Dickens",
+                "J.K. Rowling",
+                "William Shakespeare"
+            ],
+            "question": "Who is often referred to as the 'Bard of Avon' and is known for works like 'Romeo and Juliet'?"
+            },
+            {
+            "correctAnswer": "Taj Mahal",
+            "options": [
+                "Eiffel Tower",
+                "Great Wall of China",
+                "Taj Mahal",
+                "Machu Picchu"
+            ],
+            "question": "Which monument is often described as 'a teardrop on the cheek of eternity'?"
+            },
+            {
+            "correctAnswer": "Australia",
+            "options": [
+                "Canada",
+                "Australia",
+                "Brazil",
+                "India"
+            ],
+            "question": "In which country is the city of Sydney located?"
+            },
+            {
+            "correctAnswer": "Mozart",
+            "options": [
+                "Beethoven",
+                "Bach",
+                "Mozart",
+                "Chopin"
+            ],
+            "question": "Which composer is known for creating 'The Magic Flute' and 'Symphony No. 40'?"
+            },
+            {
+            "correctAnswer": "Gandhi",
+            "options": [
+                "Nelson Mandela",
+                "Winston Churchill",
+                "Martin Luther King Jr.",
+                "Gandhi"
+            ],
+            "question": "Who led the Indian independence movement through nonviolent civil disobedience?"
+            }
+        ]
+    },
+    {
+        "title": "World Capitals Trivia",
+        "questions": [
+            {
+                "correctAnswer": "Tokyo",
+                "options": [
+                    "Seoul",
+                    "Beijing",
+                    "Bangkok",
+                    "Tokyo"
+                ],
+                "question": "What is the capital of Japan?"
+            },
+            {
+            "correctAnswer": "London",
+            "options": [
+                "Paris",
+                "Berlin",
+                "Rome",
+                "London"
+            ],
+            "question": "What is the capital of the United Kingdom?"
+            },
+            {
+            "correctAnswer": "Cairo",
+            "options": [
+                "Istanbul",
+                "Riyadh",
+                "Cairo",
+                "Dubai"
+            ],
+            "question": "What is the capital of Egypt?"
+            },
+            {
+            "correctAnswer": "New Delhi",
+            "options": [
+                "Mumbai",
+                "Kolkata",
+                "Bangalore",
+                "New Delhi"
+            ],
+            "question": "What is the capital of India?"
+            },
+            {
+            "correctAnswer": "Paris",
+            "options": [
+                "Madrid",
+                "Brussels",
+                "Rome",
+                "Paris"
+            ],
+            "question": "What is the capital of France?"
+            },
+            {
+            "correctAnswer": "Moscow",
+            "options": [
+                "St. Petersburg",
+                "Kiev",
+                "Minsk",
+                "Moscow"
+            ],
+            "question": "What is the capital of Russia?"
+            },
+            {
+            "correctAnswer": "Mexico City",
+            "options": [
+                "Buenos Aires",
+                "Lima",
+                "São Paulo",
+                "Mexico City"
+            ],
+            "question": "What is the capital of Mexico?"
+            },
+            {
+            "correctAnswer": "Nairobi",
+            "options": [
+                "Johannesburg",
+                "Lagos",
+                "Cairo",
+                "Nairobi"
+            ],
+            "question": "What is the capital of Kenya?"
+            },
+            {
+            "correctAnswer": "Ottawa",
+            "options": [
+                "Toronto",
+                "Montreal",
+                "Vancouver",
+                "Ottawa"
+            ],
+            "question": "What is the capital of Canada?"
+            },
+            {
+            "correctAnswer": "Buenos Aires",
+            "options": [
+                "Santiago",
+                "Lima",
+                "Bogotá",
+                "Buenos Aires"
+            ],
+            "question": "What is the capital of Argentina?"
+            }
+        ]
+        }
+]
