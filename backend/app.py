@@ -3,6 +3,7 @@ from flask_pymongo import PyMongo
 from flask_cors import CORS, cross_origin
 from bson.objectid import ObjectId
 from flask_bcrypt import Bcrypt
+import json
 
 import os
 
@@ -208,6 +209,25 @@ def createQuizSet():
     )
     return jsonify(json_data)
     
+
+@app.route("/populate", methods=["GET"])
+@cross_origin()
+def populateDb():
+    
+    quizFile = open("quizSet.json")
+    quizCollection = json.load(quizFile)
+    
+    try:
+        db.quizzes.insert_many(quizCollection);
+        message = jsonify({"message": "populated"})
+        response = make_response(message, 201)
+        return response;
+    except Exception as e:
+        raise ValueError(e);
+
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
