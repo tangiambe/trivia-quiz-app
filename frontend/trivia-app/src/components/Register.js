@@ -115,7 +115,7 @@ export const Register = () => {
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                 <Container>
                 <img
-                    id="img"
+                    id="register-img"
                     src={logo} alt="register logo"
                 />
                 </Container>
@@ -295,11 +295,6 @@ export const Register = () => {
                         </Container>
                     </Row>
                 </Card>
-                {/* <img
-                    id="img"
-                    src={logo} alt="register logo"
-                /> */}
-
             </Container>
         </>
     )
