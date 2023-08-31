@@ -111,7 +111,7 @@ export const Login = () => {
                     </Form.Group>
                         <Button className="w-100" type="submit">Login</Button>
                         <div>
-                            <p className="mt-2">Don't have an account? <a href="/signup">Register Now!</a></p>
+                            <p className="mt-2">Don't have an account? <a href="/register">Register Now!</a></p>
                             {auth.show ? (
 
                                 auth.auth ? 

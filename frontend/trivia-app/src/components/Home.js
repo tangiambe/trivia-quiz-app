@@ -48,7 +48,7 @@ export const Home = () => {
                             </>
                         ):(
                             <>
-                                <Button href="/signup" className="btn-primary mx-2 px-4 fw-bold">Sign Up</Button>
+                                <Button href="/register" className="btn-primary mx-2 px-4 fw-bold">Register</Button>
                                 <Button href="/login" className="btn-success mx-2 px-4 fw-bold">Login</Button>
                             </>
                         )}

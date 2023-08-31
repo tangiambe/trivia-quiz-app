@@ -21,7 +21,7 @@ except:
         print("ERROR- cannot connect to db")
 
 
-"""@app.route("/signup", methods=["POST"])
+"""@app.route("/register", methods=["POST"])
 @cross_origin()
 def createUser():
    
@@ -77,10 +77,10 @@ def login():
         
     
 
-#SIGNUP ROUTE 
-@app.route("/signup", methods = ["POST"])
+#REGISTER ROUTE 
+@app.route("/register", methods = ["POST"])
 @cross_origin()
-def signup(): 
+def register(): 
     # app.secret_key = os.urandom(24)
     
    

@@ -46,7 +46,7 @@ export const NavBar = () => {
                         {activeUser._id === "-1" ? (
                             <Nav className="justify-content-end flex-grow-1 align-items-center">
                                 <Nav.Item className="px-3 py-2">
-                                    <Nav.Link href="/signup" className="fw-bold">
+                                    <Nav.Link href="/register" className="fw-bold">
                                         Register
                                     </Nav.Link>
                                 </Nav.Item>

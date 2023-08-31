@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home";
 import { NavBar } from "./components/Navbar";
 import { Login } from "./components/Login";
-import { Signup } from "./components/Register";
+import { Register } from "./components/Register";
 import { Dashboard } from "./components/Dashboard";
 import { Quiz } from "./components/Quiz";
 // import { useSelector } from "react-redux";
@@ -26,7 +26,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>
-          <Route path="/signup"  element={<Signup/>}/>
+          <Route path="/register"  element={<Register/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="dashboard/quiz/:id" element={<Quiz/>}/>
         </Routes>
