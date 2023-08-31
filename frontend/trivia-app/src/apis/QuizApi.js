@@ -4,43 +4,43 @@ export const QuizApi = {
 
     getQuizSets: async (setQuizSets) => {
 
-        try{
+        try {
             const response = await fetch(URI + "/quizsets",)
-    
+
             // console.log(response);
-            if(response.ok){
+            if (response.ok) {
                 const data = await response.json();
                 console.log("Quizsets: ", data);
                 setQuizSets(data);
-    
-            } else{
+
+            } else {
                 console.error("Error: ", response.status);
             }
 
-       } catch(error){
+        } catch (error) {
             console.error("Error: ", error);
-       }
+        }
 
     },
 
     getQuizById: async (id, setQuiz, setTotalQuestions, setShow) => {
-        try{
+        try {
             const response = await fetch(URI + `/quizset/${id}`);
-        
-            if(response.ok){
+
+            if (response.ok) {
                 const data = await response.json();
                 console.log("Data: ", data);
                 setQuiz(data);
                 setTotalQuestions(data.questions.length);
                 setShow(true);
-               
+
             } else {
                 console.error("Error:", response.status);
-                
-            }
-           
 
-        } catch(error){
+            }
+
+
+        } catch (error) {
             console.error("Error: ", error);
         }
 

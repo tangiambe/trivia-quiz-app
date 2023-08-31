@@ -9,8 +9,8 @@ export const Quiz = () => {
     // Get the quiz id from the URL
     const location = useLocation();
     const pathParts = location.pathname.split('/');
-    const id = pathParts[pathParts.length -1];
-    
+    const id = pathParts[pathParts.length - 1];
+
     const [show, setShow] = useState(false);
 
     // const totalQuestions = quiz.questions.length;
@@ -25,16 +25,13 @@ export const Quiz = () => {
         const selectedAnswer = e.target.value;
         const correctAnswer = quiz.questions[question].correctAnswer;
 
-        if(selectedAnswer === correctAnswer){
-            // console.log("Correct");
+        if (selectedAnswer === correctAnswer) {
             setScore(prev => prev + 100);
-            // console.log(score);
         } else {
-            // console.log("Incorrect");
             setScore(prev => prev + 0);
         }
-        
-        if(question < totalQuestions - 1 ){
+
+        if (question < totalQuestions - 1) {
             setQuestion(prev => prev + 1);
         } else {
             setFinished(true);
@@ -42,30 +39,21 @@ export const Quiz = () => {
     }
 
     const handleClose = () => {
-
         setTimeout(() => {
             navigate("/dashboard");
         }, 1000)
     }
 
-    useEffect(()=> {
-
-       
-        QuizApi.getQuizById(id,setQuiz, setTotalQuestions, setShow);
-
-       
-
+    useEffect(() => {
+        QuizApi.getQuizById(id, setQuiz, setTotalQuestions, setShow);
     }, [finished, id]);
 
-    return(
+    return (
         <>
             <Container className="bg-wrapper d-flex align-items-center justify-content-center" fluid>
                 <Container className="d-flex flex-column align-items-center justify-content-center">
 
-                    <Modal className="quizModal text-center"
-                        show={finished} 
-                        onHide={handleClose} 
-                    >
+                    <Modal className="quizModal text-center" show={finished} onHide={handleClose}>
                         <Modal.Header closeButton>
                             <Modal.Title>Results</Modal.Title>
                         </Modal.Header>
@@ -74,20 +62,20 @@ export const Quiz = () => {
                             <small className="text-muted fw-lighter">Click close button or dashboard button to redirect to the dashboard</small>
                         </Modal.Body>
                         <Modal.Footer>
-                        <Button className="quizButton" onClick={handleClose}>
-                            Dashboard
-                        </Button>
+                            <Button className="quizButton" onClick={handleClose}>
+                                Dashboard
+                            </Button>
                         </Modal.Footer>
                     </Modal>
 
                     {show ? (
-
                         <Card className="quizCard py-1 px-1">
-                            <Card.Img className="quizImage" height={"275rem"} src="https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVhY3R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=2000&q=60"/>
+                            <Card.Img className="quizImage" height={"275rem"} src="https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVhY3R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=2000&q=60" />
+                            
                             <Container className="d-flex justify-content-center">
-                                <Card.Title className="text-center text-white fw-bold py-4" style={{width: "40vw"}}>{quiz.questions[question].question}</Card.Title>
-
+                                <Card.Title className="text-center text-white fw-bold py-4" style={{ width: "40vw" }}>{quiz.questions[question].question}</Card.Title>
                             </Container>
+
                             <Card.Body>
                                 <Container className="text-center">
                                     <Row>
@@ -100,6 +88,7 @@ export const Quiz = () => {
                                     </Row>
                                 </Container>
                             </Card.Body>
+
                             <Card.Footer>
                                 <Container className="d-flex">
                                     <Container className="d-flex justify-content-start">
@@ -113,12 +102,12 @@ export const Quiz = () => {
                                     </Container>
                                 </Container>
                             </Card.Footer>
-                        </Card> 
-                    ):(
+
+                        </Card>
+                    ) : (
                         <>
                         </>
                     )}
-
                 </Container>
             </Container>
         </>

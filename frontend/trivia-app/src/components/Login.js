@@ -19,9 +19,6 @@ import logo from "../images/login-logo.svg";
 
 export const Login = () => {
 
-    // Two Hooks - useState(): manages/keeps track data within your component
-    // -useEffect(): manages startup behavior when the component mounts
-
     const [user, setUser] = useState({
         _id: "-1",
         firstName: "",
@@ -32,9 +29,6 @@ export const Login = () => {
     });
 
     const [auth, setAuth] = useState({ show: false, auth: false });
-    // const activeUser = useSelector((state) => state.user);
-    // console.log("Active User in Login: ",activeUser);
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -43,9 +37,7 @@ export const Login = () => {
         UserApi.getUserByCredentials(event.target.username.value, event.target.password.value, setUser, setAuth);
     }
 
-    // Arrow syntax: () => {}
     useEffect(() => {
-
         if (user._id !== "-1") {
             dispatch(login(user));
 
@@ -53,10 +45,6 @@ export const Login = () => {
                 navigate("/dashboard");
             }, 600)
         }
-
-
-
-        // console.log("mounted");
     }, [user, dispatch, navigate, auth])
 
     /* Password Visiblity */
@@ -64,7 +52,6 @@ export const Login = () => {
     const togglePasswordVisiblity = () => { setPasswordShown(passwordShown ? false : true) };
     const showPwd = <FontAwesomeIcon icon={faEye} />;
     const hidePwd = <FontAwesomeIcon icon={faEyeSlash} />;
-
 
     return (
         <>
@@ -120,12 +107,10 @@ export const Login = () => {
                                 <div>
                                     <p className="mt-2">Don't have an account? <a href="/register">Register Now!</a></p>
                                     {auth.show ? (
-
                                         auth.auth ?
                                             <Alert variant="success">Logged In!</Alert>
                                             :
                                             <Alert variant="danger">Invalid Credentials</Alert>
-
                                     ) : (
                                         <></>
                                     )}
